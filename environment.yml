@@ -1,4 +1,4 @@
-name: text_mining_with_python
+name: tmwp
 channels:
   - conda-forge
 dependencies:
@@ -8,7 +8,5 @@ dependencies:
     - docx2txt
     - pypdf2
     - afinn
-    - vaderSentiment 
-    - python-louvain
-    - twarc
-
+    - vaderSentiment
+    - jupyterthemes
