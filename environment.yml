@@ -1,0 +1,14 @@
+name: text_mining_with_python
+channels:
+  - conda-forge
+dependencies:
+  - twython
+  - anaconda
+  - pip:
+    - docx2txt
+    - pypdf2
+    - afinn
+    - vaderSentiment 
+    - python-louvain
+    - twarc
+
