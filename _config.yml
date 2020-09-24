@@ -1,0 +1,22 @@
+# Book settings
+title: "Text Mining With Python"
+author: "Neal Caren and Katie Furl"
+email: neal.caren@unc.edu
+description: >- # this means to ignore newlines until "baseurl:"
+  An introduction to collecting and analzying text with Python for social scientists.
+
+
+latex:
+  latex_documents:
+    targetname: book.tex
+
+html:
+  extra_navbar: ""
+  extra_footer: "Text Mining With Python"
+
+repository:
+  wurl: https://github.com/nealcaren/tmwp
+
+sphinx:
+  config:
+    html_show_copyright: false

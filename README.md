@@ -1,10 +1,38 @@
-## Text Mining with Python
-### Neal Caren (University of North Carolina, Chapel Hill)
+# Text Mining with Python
+*Neal Caren and Katherine Furl*   
+*University of North Carolina, Chapel Hill*
 
-This book is an introduction to collecting and analyzing "big data" for social scientists. Over the last decade, the variety and types of data available to researchers have exploded, including not only contemporary data, such as from websites and social media platforms but also historical data, from digitized interviews to 19th-century newspapers. At the same time, analytic techniques from computer science are increasingly being used to solve social science problems.
-One volume is not enough to master the techniques for collecting and analyzing big data. This text will, however,  establish the foundation for developing these skills. The book is designed as a practical overview. The emphasis each chapter will be on applying the specific techniques rather than on their mathematical basis. Combined, readers will have the skills and resources to use these methods to theoretically-relevant problems in the social sciences.
 
-This repository includes the Python materials for the book as Jupyter notebooks. To use the text interactively:
- * Follow the [link](https://mybinder.org/v2/gh/nealcaren/tmwp/master) to run all the notebooks interactively.
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nealcaren/tmwp/master). All of the lessons are in the "notebook" folder.
- * Download and install the Anaconda Python 3.7 distribution.  Download this repository. Use Anaconda-Navigator to open a Jupyter Notebook environment, which will start a new tab in your browser. On that page, navigate to the "Notebooks" directory in your downloaded folder for this repository. Click on a notebook.
+1. Getting started
+   1. [Installing your tools](Notebooks/setup.ipynb)    
+   2. [Using Jupyter Notebooks](Notebooks/using-jupyter-notebooks.ipynb)    
+2. Basics    
+   1. [Python 101](Notebooks/python.ipynb)    
+   3. [Pandas 101](Notebooks/pandas.ipynb)    
+3. Collecting Texts      
+   1. [Web APIs](Notebooks/APIs.ipynb)      
+   3. [Web Scraping](Notebooks/Web.ipynb)      
+   3. [Bulk Downloading Web pages](Notebooks/downloading.ipynb)
+   1. [Other files](Notebooks/other-files.ipynb)          
+   4. [PDFs](Notebooks/from-PDF-to-txt.ipynb)          
+   5. Word Documents - ?          
+   4. [Case Study: Twitter with Twint](Notebooks/scraping-twitter-with-twint.ipynb)     
+   4. Case Study: Reddit    
+2. Counting words   
+   	1. Frequencies
+   	2. Sentiment
+   	3. Case Study:  ???   
+3. Natural Language Processing
+   1. Part of speech tagging
+   2. Named Entity Extraction
+   3. Word vectors
+   4. Case Study:  ???
+4. Analysis
+   1. Classification
+   2. Topic Modeling
+   3. Case Study:  ???
+5. Appendix
+   1. Pipelines - ?
+   2. Train/test out of sample
+   3. Bigrams?    
+   4. Teaching with Notebooks

@@ -1,0 +1,6 @@
+- file: readme
+
+- part: Getting Started
+  chapters:
+    /notebooks/setup
+    /notebooks/using-jupyter-notebooks
