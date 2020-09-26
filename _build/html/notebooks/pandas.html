@@ -1,0 +1,5098 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pandas 101 &#8212; Text Mining With Python</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/spanels-index--0afa1ebdab0bb23b98b56d34c23d9f57.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/spanels-variables--ffc7f74dcb1b9eecba2dbcbc22818714.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Python 101" href="python.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Text Mining With Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Text Mining with Python
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="setup.html">
+   Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="using-jupyter-notebooks.html">
+   Using Jupyter Notebooks
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basics
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html">
+   Python 101
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#strings">
+   Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#slicing">
+   Slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#numbers">
+   Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#lists">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#dictionaries">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#spaces">
+   Spaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#loops">
+   Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#functions">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   pandas 101
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#reading-data">
+   Reading data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#learning-about-your-dataframe">
+   Learning about your dataframe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#working-with-variables">
+   Working with variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#plots">
+   Plots
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/pandas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/notebooks/pandas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/notebooks/pandas.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="pandas-101">
+<h1>pandas 101<a class="headerlink" href="#pandas-101" title="Permalink to this headline">¶</a></h1>
+<p>This section provides a brief introduction to pandas. The pandas library is a key component for performing data science in Python for a number of reasons. First (and most importantly), it provides two data types, series and data frame, that allow you to store and manipulate data in a way that is useful for analysis. Second, it is incredibly useful for importing and exporting data in a wide variety of formats. Finally, it allows users to generate descriptive analyses, including both summary statistics and visualizations. This section provides an introduction to the main capabilities of pandas relevant to data analysis.</p>
+<p>Most of the things that you will want to do in Python require importing libraries. By convention, pandas is imported as <code class="docutils literal notranslate"><span class="pre">pd</span></code>. Additionally, we enable the ability for pandas graphics to be displayed within the notebook with <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reading-data">
+<h1>Reading data<a class="headerlink" href="#reading-data" title="Permalink to this headline">¶</a></h1>
+<p>In the summer of 2017, the Washington Post produced a <a class="reference external" href="https://www.washingtonpost.com/graphics/2018/investigations/unsolved-homicide-database/">report</a> on murder clearance rates in U.S. cities. The also released the <a class="reference external" href="https://github.com/washingtonpost/data-homicides">data</a> they collected on Github as a csv file. We can create a new dataframe, called <code class="docutils literal notranslate"><span class="pre">df</span></code>, using the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html">pandas</a> <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/homicide.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">784</span><span class="n">bcd1eb9cd</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/homicide.csv&#39;</span><span class="p">)</span>
+
+<span class="nn">~/anaconda3/envs/tmwp/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)</span>
+<span class="g g-Whitespace">    </span><span class="mi">684</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">685</span> 
+<span class="ne">--&gt; </span><span class="mi">686</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">687</span> 
+<span class="g g-Whitespace">    </span><span class="mi">688</span> 
+
+<span class="nn">~/anaconda3/envs/tmwp/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span> 
+<span class="g g-Whitespace">    </span><span class="mi">451</span>     <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">452</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">fp_or_buf</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span> 
+<span class="g g-Whitespace">    </span><span class="mi">454</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+
+<span class="nn">~/anaconda3/envs/tmwp/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">934</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span> 
+<span class="ne">--&gt; </span><span class="mi">936</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">937</span> 
+<span class="g g-Whitespace">    </span><span class="mi">938</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">~/anaconda3/envs/tmwp/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1166</span>     <span class="k">def</span> <span class="nf">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1167</span>         <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1168</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="n">CParserWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1169</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1170</span>             <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
+
+<span class="nn">~/anaconda3/envs/tmwp/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1996</span>         <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;usecols&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usecols</span>
+<span class="g g-Whitespace">   </span><span class="mi">1997</span> 
+<span class="ne">-&gt; </span><span class="mi">1998</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">TextReader</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1999</span>         <span class="bp">self</span><span class="o">.</span><span class="n">unnamed_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">unnamed_cols</span>
+<span class="g g-Whitespace">   </span><span class="mi">2000</span> 
+
+<span class="nn">pandas/_libs/parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader.__cinit__</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader._setup_parser_source</span><span class="nt">()</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/homicide.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> assumes a comma separator, but this could be customized by adding the  <code class="docutils literal notranslate"><span class="pre">sep=</span></code> parameter. So a pipe-delimited version of the file could be read with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/homicide.psv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Additionally, read_csv can access files directly from the web.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">csv_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/washingtonpost/data-homicides/master/homicide-data.csv&#39;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="learning-about-your-dataframe">
+<h1>Learning about your dataframe<a class="headerlink" href="#learning-about-your-dataframe" title="Permalink to this headline">¶</a></h1>
+<p>After loading a dataframe, best practice is to get a sense of the data with the <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">sample</span></code>, <code class="docutils literal notranslate"><span class="pre">info</span></code> and <code class="docutils literal notranslate"><span class="pre">describe</span></code> methods. <code class="docutils literal notranslate"><span class="pre">head</span></code> shows the first five rows of the dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>uid</th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alb-000001</td>
+      <td>20100504</td>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+      <td>Closed without arrest</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Alb-000002</td>
+      <td>20100216</td>
+      <td>MONTOYA</td>
+      <td>CAMERON</td>
+      <td>Hispanic</td>
+      <td>17.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.056810</td>
+      <td>-106.715321</td>
+      <td>Closed by arrest</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Alb-000003</td>
+      <td>20100601</td>
+      <td>SATTERFIELD</td>
+      <td>VIVIANA</td>
+      <td>White</td>
+      <td>15.0</td>
+      <td>Female</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.086092</td>
+      <td>-106.695568</td>
+      <td>Closed without arrest</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Alb-000004</td>
+      <td>20100101</td>
+      <td>MENDIOLA</td>
+      <td>CARLOS</td>
+      <td>Hispanic</td>
+      <td>32.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.078493</td>
+      <td>-106.556094</td>
+      <td>Closed by arrest</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Alb-000005</td>
+      <td>20100102</td>
+      <td>MULA</td>
+      <td>VIVIAN</td>
+      <td>White</td>
+      <td>72.0</td>
+      <td>Female</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.130357</td>
+      <td>-106.580986</td>
+      <td>Closed without arrest</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In addition to the data in the csv file, an index has been created to identifiy each row. By default, this is an interger starting with 0.</p>
+<p>It can also be useful to examine random rows from the data frame using <code class="docutils literal notranslate"><span class="pre">sample</span></code>. In this case, I’ll look at four random rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>uid</th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>12731</th>
+      <td>Chi-700627</td>
+      <td>20171211</td>
+      <td>PARKER</td>
+      <td>GEORGE L</td>
+      <td>Black</td>
+      <td>23.0</td>
+      <td>Male</td>
+      <td>Chicago</td>
+      <td>IL</td>
+      <td>41.876664</td>
+      <td>-87.730467</td>
+      <td>Open/No arrest</td>
+    </tr>
+    <tr>
+      <th>44537</th>
+      <td>Pit-000574</td>
+      <td>20070830</td>
+      <td>KING</td>
+      <td>ROBERT LEE</td>
+      <td>Black</td>
+      <td>36.0</td>
+      <td>Male</td>
+      <td>Pittsburgh</td>
+      <td>PA</td>
+      <td>40.419037</td>
+      <td>-79.988273</td>
+      <td>Open/No arrest</td>
+    </tr>
+    <tr>
+      <th>2821</th>
+      <td>Bal-003082</td>
+      <td>20130601</td>
+      <td>EPPS</td>
+      <td>CURTIS</td>
+      <td>Black</td>
+      <td>48.0</td>
+      <td>Male</td>
+      <td>Baltimore</td>
+      <td>MD</td>
+      <td>39.356688</td>
+      <td>-76.609639</td>
+      <td>Closed by arrest</td>
+    </tr>
+    <tr>
+      <th>18856</th>
+      <td>Det-002446</td>
+      <td>20140811</td>
+      <td>BYRD</td>
+      <td>JAVON</td>
+      <td>Black</td>
+      <td>21.0</td>
+      <td>Male</td>
+      <td>Detroit</td>
+      <td>MI</td>
+      <td>42.416459</td>
+      <td>-83.241463</td>
+      <td>Closed by arrest</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If the dataset is wide, middle columns will not be displayed. Also, if text fields are long, only the first few characters will be shown. These can both be adjusted using pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/options.html">display settings</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">info</span></code> can be used to explore the data types and the number of non-missing cases for each variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 52179 entries, 0 to 52178
+Data columns (total 12 columns):
+ #   Column         Non-Null Count  Dtype  
+---  ------         --------------  -----  
+ 0   uid            52179 non-null  object 
+ 1   reported_date  52179 non-null  int64  
+ 2   victim_last    52179 non-null  object 
+ 3   victim_first   52179 non-null  object 
+ 4   victim_race    52179 non-null  object 
+ 5   victim_age     49180 non-null  float64
+ 6   victim_sex     52179 non-null  object 
+ 7   city           52179 non-null  object 
+ 8   state          52179 non-null  object 
+ 9   lat            52119 non-null  float64
+ 10  lon            52119 non-null  float64
+ 11  disposition    52179 non-null  object 
+dtypes: float64(3), int64(1), object(8)
+memory usage: 4.8+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">describe</span></code> provides summary statistics for all the numeric variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>reported_date</th>
+      <th>victim_age</th>
+      <th>lat</th>
+      <th>lon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>5.217900e+04</td>
+      <td>49180.000000</td>
+      <td>52119.000000</td>
+      <td>52119.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>2.013090e+07</td>
+      <td>31.801220</td>
+      <td>37.026786</td>
+      <td>-91.471094</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.123420e+06</td>
+      <td>14.418692</td>
+      <td>4.348647</td>
+      <td>13.746378</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>2.007010e+07</td>
+      <td>0.000000</td>
+      <td>25.725214</td>
+      <td>-122.507779</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>2.010032e+07</td>
+      <td>22.000000</td>
+      <td>33.765203</td>
+      <td>-95.997198</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2.012122e+07</td>
+      <td>28.000000</td>
+      <td>38.524973</td>
+      <td>-87.710286</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.015091e+07</td>
+      <td>40.000000</td>
+      <td>40.027627</td>
+      <td>-81.755909</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2.015111e+08</td>
+      <td>102.000000</td>
+      <td>45.051190</td>
+      <td>-71.011519</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The column headers can be extracted using <code class="docutils literal notranslate"><span class="pre">keys</span></code>.</p>
+<div class="section" id="df-keys">
+<h2>df.keys()<a class="headerlink" href="#df-keys" title="Permalink to this headline">¶</a></h2>
+<p>If you wanted to look at the bottom of the dataframe, you can use <code class="docutils literal notranslate"><span class="pre">tail</span></code>. Both <code class="docutils literal notranslate"><span class="pre">head</span></code> and <code class="docutils literal notranslate"><span class="pre">tail</span></code> allow you to change the number of rows displayed from the default five.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>uid</th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>52176</th>
+      <td>Was-001382</td>
+      <td>20161114</td>
+      <td>WASHINGTON</td>
+      <td>WILLIE</td>
+      <td>Black</td>
+      <td>23.0</td>
+      <td>Male</td>
+      <td>Washington</td>
+      <td>DC</td>
+      <td>38.828025</td>
+      <td>-77.002511</td>
+      <td>Open/No arrest</td>
+    </tr>
+    <tr>
+      <th>52177</th>
+      <td>Was-001383</td>
+      <td>20161130</td>
+      <td>BARNES</td>
+      <td>MARCUS</td>
+      <td>Black</td>
+      <td>24.0</td>
+      <td>Male</td>
+      <td>Washington</td>
+      <td>DC</td>
+      <td>38.820476</td>
+      <td>-77.008640</td>
+      <td>Open/No arrest</td>
+    </tr>
+    <tr>
+      <th>52178</th>
+      <td>Was-001384</td>
+      <td>20160901</td>
+      <td>JACKSON</td>
+      <td>KEVIN</td>
+      <td>Black</td>
+      <td>17.0</td>
+      <td>Male</td>
+      <td>Washington</td>
+      <td>DC</td>
+      <td>38.866689</td>
+      <td>-76.982409</td>
+      <td>Closed by arrest</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sample</span></code> displays random rows from the dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>uid</th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7341</th>
+      <td>Chi-003401</td>
+      <td>20070426</td>
+      <td>RUSSELL</td>
+      <td>JEROME</td>
+      <td>Black</td>
+      <td>22.0</td>
+      <td>Male</td>
+      <td>Chicago</td>
+      <td>IL</td>
+      <td>41.894900</td>
+      <td>-87.759246</td>
+      <td>Open/No arrest</td>
+    </tr>
+    <tr>
+      <th>14447</th>
+      <td>Col-700051</td>
+      <td>20170515</td>
+      <td>CHARLES</td>
+      <td>DAMECO</td>
+      <td>Black</td>
+      <td>22.0</td>
+      <td>Male</td>
+      <td>Columbus</td>
+      <td>OH</td>
+      <td>39.986965</td>
+      <td>-82.943833</td>
+      <td>Open/No arrest</td>
+    </tr>
+    <tr>
+      <th>39554</th>
+      <td>Okl-000595</td>
+      <td>20160807</td>
+      <td>SAYLES</td>
+      <td>DAZMEONTAE</td>
+      <td>Black</td>
+      <td>16.0</td>
+      <td>Male</td>
+      <td>Oklahoma City</td>
+      <td>OK</td>
+      <td>35.587162</td>
+      <td>-97.506769</td>
+      <td>Open/No arrest</td>
+    </tr>
+    <tr>
+      <th>12033</th>
+      <td>Chi-008093</td>
+      <td>20161126</td>
+      <td>BARNETT</td>
+      <td>DEQUAN M</td>
+      <td>Black</td>
+      <td>18.0</td>
+      <td>Male</td>
+      <td>Chicago</td>
+      <td>IL</td>
+      <td>41.734543</td>
+      <td>-87.553138</td>
+      <td>Open/No arrest</td>
+    </tr>
+    <tr>
+      <th>38556</th>
+      <td>Oak-000530</td>
+      <td>20090708</td>
+      <td>MARTINEZ</td>
+      <td>ROBERT</td>
+      <td>Hispanic</td>
+      <td>52.0</td>
+      <td>Male</td>
+      <td>Oakland</td>
+      <td>CA</td>
+      <td>37.783367</td>
+      <td>-122.233641</td>
+      <td>Open/No arrest</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="dataframe-exercise-1">
+<h2>Dataframe Exercise 1<a class="headerlink" href="#dataframe-exercise-1" title="Permalink to this headline">¶</a></h2>
+<p>Display the first four rows of the dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Type your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>uid</th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alb-000001</td>
+      <td>20100504</td>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+      <td>Closed without arrest</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Alb-000002</td>
+      <td>20100216</td>
+      <td>MONTOYA</td>
+      <td>CAMERON</td>
+      <td>Hispanic</td>
+      <td>17.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.056810</td>
+      <td>-106.715321</td>
+      <td>Closed by arrest</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Alb-000003</td>
+      <td>20100601</td>
+      <td>SATTERFIELD</td>
+      <td>VIVIANA</td>
+      <td>White</td>
+      <td>15.0</td>
+      <td>Female</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.086092</td>
+      <td>-106.695568</td>
+      <td>Closed without arrest</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Alb-000004</td>
+      <td>20100101</td>
+      <td>MENDIOLA</td>
+      <td>CARLOS</td>
+      <td>Hispanic</td>
+      <td>32.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.078493</td>
+      <td>-106.556094</td>
+      <td>Closed by arrest</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="working-with-variables">
+<h1>Working with variables<a class="headerlink" href="#working-with-variables" title="Permalink to this headline">¶</a></h1>
+<p>As a reminder of the contents of the dataframe, here’s a radom row.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>uid</th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>11102</th>
+      <td>Chi-007162</td>
+      <td>20150718</td>
+      <td>O'BRIEN</td>
+      <td>JEMEL</td>
+      <td>Black</td>
+      <td>29.0</td>
+      <td>Male</td>
+      <td>Chicago</td>
+      <td>IL</td>
+      <td>41.758892</td>
+      <td>-87.635723</td>
+      <td>Open/No arrest</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You can access the contents of a specific column (also knows as a feature or variable) by enclosing the name in brackets, similar to the process that returns the value of a dictionary key.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_age&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        78.0
+1        17.0
+2        15.0
+3        32.0
+4        72.0
+         ... 
+52174    29.0
+52175    19.0
+52176    23.0
+52177    24.0
+52178    17.0
+Name: victim_age, Length: 52179, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>This returns a series containing the index and values for the column. As this has many values, pandas only displays the top and bottom 30 cases.</p>
+<p>The same <code class="docutils literal notranslate"><span class="pre">describe</span></code> method can be called on a single column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    49180.000000
+mean        31.801220
+std         14.418692
+min          0.000000
+25%         22.000000
+50%         28.000000
+75%         40.000000
+max        102.000000
+Name: victim_age, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">value_counts</span></code> methods returns the value frequencies in descending order.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CA    6288
+TX    5891
+IL    5535
+PA    3668
+MO    2867
+MD    2827
+MI    2519
+TN    2281
+FL    2120
+LA    1858
+OH    1778
+NV    1381
+DC    1345
+IN    1322
+OK    1255
+GA    1219
+NY    1148
+wI    1115
+NC     963
+AZ     914
+AL     801
+MA     614
+KY     576
+VA     429
+NE     409
+NM     378
+MN     366
+CO     312
+Name: state, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dataframe-exercise-2">
+<h2>Dataframe Exercise 2<a class="headerlink" href="#dataframe-exercise-2" title="Permalink to this headline">¶</a></h2>
+<p>Explore the <code class="docutils literal notranslate"><span class="pre">disposition</span></code> and <code class="docutils literal notranslate"><span class="pre">victim_race</span></code> columns in the dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;disposition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_race&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closed by arrest         25674
+Open/No arrest           23583
+Closed without arrest     2922
+Name: disposition, dtype: int64
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Black       33361
+Hispanic     6901
+White        6333
+Unknown      4199
+Other         700
+Asian         685
+Name: victim_race, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you wanted to store the results, the <code class="docutils literal notranslate"><span class="pre">values</span></code> method can be used to produce an array containing all the values in order.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">ages</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>52179
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_age</span> <span class="o">=</span> <span class="n">ages</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">first_age</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>78.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dataframe-exercise-3">
+<h2>Dataframe Exercise 3<a class="headerlink" href="#dataframe-exercise-3" title="Permalink to this headline">¶</a></h2>
+<p>Can you display seven values from somewhere in the middle of our age variable?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span><span class="p">[</span><span class="mi">452</span><span class="p">:</span><span class="mi">459</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 9., 29., 41., 54., 48., 21., 20.])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="titanic-exercise-1">
+<h2>Titanic Exercise 1<a class="headerlink" href="#titanic-exercise-1" title="Permalink to this headline">¶</a></h2>
+<p>A well-known data set is the list of Titanic passengers. A version can be found in the data folder called, “titanic.csv”. Open the file as a new dataframe <code>titanic_df</code>. How many cases? How many columns? What can you find out about the data?</p>
+</div>
+</div>
+<div class="section" id="plots">
+<h1>Plots<a class="headerlink" href="#plots" title="Permalink to this headline">¶</a></h1>
+<p>pandas also has plotting capabilies, such as histograms (<code class="docutils literal notranslate"><span class="pre">hist</span></code>) and a correlation matrix (<code class="docutils literal notranslate"><span class="pre">scatter_matrix</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/pandas_47_0.png" src="../_images/pandas_47_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_race&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/pandas_48_0.png" src="../_images/pandas_48_0.png" />
+</div>
+</div>
+<p>Plots of individual variables, or series in pandas terminology, are attributes of the data type. That is, you start with the thing you want to plot, in this case <code class="docutils literal notranslate"><span class="pre">df['victim_age']</span></code>, and append what you want to do, such as <code class="docutils literal notranslate"><span class="pre">.hist()</span></code>.</p>
+<p>A second type of plots, such as scatter plots, are methods of the dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x114819040&gt;
+</pre></div>
+</div>
+<img alt="../_images/pandas_50_1.png" src="../_images/pandas_50_1.png" />
+</div>
+</div>
+<p>You could look at the other dataframe plotting methods on the helpful <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/visualization.html">pandas visualizations page</a>. Alternatively, typing tab after <code class="docutils literal notranslate"><span class="pre">df.plot.</span></code> also reveals your options.</p>
+<p><img src="images/auto.png"  width="150px" align="left" /><p></p>
+<p>Want to know about <code class="docutils literal notranslate"><span class="pre">hexbin</span></code>? Again, the helpful webpage linked above is useful, but you can also append a question mark to the end of the command to bring up the documentation.</p>
+<p><code class="docutils literal notranslate"><span class="pre">df.plot.hexbin?</span></code></p>
+<img src="images/docstring.png" width = "80%" align="left"/><p>A third group of plots are part of the pandas plotting library. In these cases, the thing you want to plot is the first, or only, parameter passed, as is the case with the correlation matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/pandas_54_0.png" src="../_images/pandas_54_0.png" />
+</div>
+</div>
+<p>Finally, you can also create subplots using the <code class="docutils literal notranslate"><span class="pre">by</span></code> option. Note that <code class="docutils literal notranslate"><span class="pre">by</span></code> accepts a series, or dataframe column, rather than a column name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_sex&#39;</span><span class="p">],</span>
+                      <span class="n">bins</span> <span class="o">=</span> <span class="mi">20</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/pandas_56_0.png" src="../_images/pandas_56_0.png" />
+</div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">by</span></code> produces separate x and y scales for each subgraph. This is why it appears to be a relatively large number of deaths of very young females. The numbers between men and women at this age are comparable, but the very large number of male deaths in their 20s results in very different xscales for the graphs. This option can be changed with the <code class="docutils literal notranslate"><span class="pre">sharex</span></code> or <code class="docutils literal notranslate"><span class="pre">sharey</span></code> option.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_sex&#39;</span><span class="p">],</span>
+                      <span class="n">bins</span>   <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+                      <span class="n">sharex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                      <span class="n">sharey</span> <span class="o">=</span> <span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/pandas_58_0.png" src="../_images/pandas_58_0.png" />
+</div>
+</div>
+<div class="section" id="other-descriptives">
+<h2>Other descriptives<a class="headerlink" href="#other-descriptives" title="Permalink to this headline">¶</a></h2>
+<p>Pandas also has a method for producing crosstabs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_race&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;disposition&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>disposition</th>
+      <th>Closed by arrest</th>
+      <th>Closed without arrest</th>
+      <th>Open/No arrest</th>
+    </tr>
+    <tr>
+      <th>victim_race</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Asian</th>
+      <td>410</td>
+      <td>72</td>
+      <td>203</td>
+    </tr>
+    <tr>
+      <th>Black</th>
+      <td>15462</td>
+      <td>1496</td>
+      <td>16403</td>
+    </tr>
+    <tr>
+      <th>Hispanic</th>
+      <td>3332</td>
+      <td>401</td>
+      <td>3168</td>
+    </tr>
+    <tr>
+      <th>Other</th>
+      <td>366</td>
+      <td>30</td>
+      <td>304</td>
+    </tr>
+    <tr>
+      <th>Unknown</th>
+      <td>2145</td>
+      <td>320</td>
+      <td>1734</td>
+    </tr>
+    <tr>
+      <th>White</th>
+      <td>3959</td>
+      <td>603</td>
+      <td>1771</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note that since this is a pandas method, and not one of a specific dataframe, you need to be explicit about which datatframe each variable is coming from. That is why the first parameter is not <code class="docutils literal notranslate"><span class="pre">'victim_race'</span></code> but <code class="docutils literal notranslate"><span class="pre">df['victim_race']</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">normalize</span></code> can be used to display percentages instead of frequencies. A value of <code class="docutils literal notranslate"><span class="pre">index</span></code> normalized by row, <code class="docutils literal notranslate"><span class="pre">columns</span></code> by column, and <code class="docutils literal notranslate"><span class="pre">all</span></code> by all values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_race&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;disposition&#39;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>disposition</th>
+      <th>Closed by arrest</th>
+      <th>Closed without arrest</th>
+      <th>Open/No arrest</th>
+    </tr>
+    <tr>
+      <th>victim_race</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Asian</th>
+      <td>0.598540</td>
+      <td>0.105109</td>
+      <td>0.296350</td>
+    </tr>
+    <tr>
+      <th>Black</th>
+      <td>0.463475</td>
+      <td>0.044843</td>
+      <td>0.491682</td>
+    </tr>
+    <tr>
+      <th>Hispanic</th>
+      <td>0.482829</td>
+      <td>0.058108</td>
+      <td>0.459064</td>
+    </tr>
+    <tr>
+      <th>Other</th>
+      <td>0.522857</td>
+      <td>0.042857</td>
+      <td>0.434286</td>
+    </tr>
+    <tr>
+      <th>Unknown</th>
+      <td>0.510836</td>
+      <td>0.076209</td>
+      <td>0.412955</td>
+    </tr>
+    <tr>
+      <th>White</th>
+      <td>0.625138</td>
+      <td>0.095216</td>
+      <td>0.279646</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Since this returns a dataframe, it can be saved or plotted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_tab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_race&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;disposition&#39;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+
+<span class="n">cross_tab</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>disposition</th>
+      <th>Closed by arrest</th>
+      <th>Closed without arrest</th>
+      <th>Open/No arrest</th>
+    </tr>
+    <tr>
+      <th>victim_race</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Asian</th>
+      <td>0.598540</td>
+      <td>0.105109</td>
+      <td>0.296350</td>
+    </tr>
+    <tr>
+      <th>Black</th>
+      <td>0.463475</td>
+      <td>0.044843</td>
+      <td>0.491682</td>
+    </tr>
+    <tr>
+      <th>Hispanic</th>
+      <td>0.482829</td>
+      <td>0.058108</td>
+      <td>0.459064</td>
+    </tr>
+    <tr>
+      <th>Other</th>
+      <td>0.522857</td>
+      <td>0.042857</td>
+      <td>0.434286</td>
+    </tr>
+    <tr>
+      <th>Unknown</th>
+      <td>0.510836</td>
+      <td>0.076209</td>
+      <td>0.412955</td>
+    </tr>
+    <tr>
+      <th>White</th>
+      <td>0.625138</td>
+      <td>0.095216</td>
+      <td>0.279646</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_tab</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/crosstab.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="titanic-exercise-2">
+<h2>Titanic Exercise 2<a class="headerlink" href="#titanic-exercise-2" title="Permalink to this headline">¶</a></h2>
+<p>In your Titanic dataframe, run a crosstab between sex and survived. Anything interesting?</p>
+<p>In order to highlight a meaningful characteristic of the data, you can sort before plotting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_tab</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Closed by arrest&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>disposition</th>
+      <th>Closed by arrest</th>
+      <th>Closed without arrest</th>
+      <th>Open/No arrest</th>
+    </tr>
+    <tr>
+      <th>victim_race</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Black</th>
+      <td>0.463475</td>
+      <td>0.044843</td>
+      <td>0.491682</td>
+    </tr>
+    <tr>
+      <th>Hispanic</th>
+      <td>0.482829</td>
+      <td>0.058108</td>
+      <td>0.459064</td>
+    </tr>
+    <tr>
+      <th>Unknown</th>
+      <td>0.510836</td>
+      <td>0.076209</td>
+      <td>0.412955</td>
+    </tr>
+    <tr>
+      <th>Other</th>
+      <td>0.522857</td>
+      <td>0.042857</td>
+      <td>0.434286</td>
+    </tr>
+    <tr>
+      <th>Asian</th>
+      <td>0.598540</td>
+      <td>0.105109</td>
+      <td>0.296350</td>
+    </tr>
+    <tr>
+      <th>White</th>
+      <td>0.625138</td>
+      <td>0.095216</td>
+      <td>0.279646</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_tab</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Closed by arrest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span>   <span class="o">=</span> <span class="s1">&#39;barh&#39;</span><span class="p">,</span>
+                                                  <span class="n">title</span>  <span class="o">=</span> <span class="s1">&#39;Disposition by race&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x116865640&gt;
+</pre></div>
+</div>
+<img alt="../_images/pandas_72_1.png" src="../_images/pandas_72_1.png" />
+</div>
+</div>
+<div class="section" id="subsets">
+<h3>Subsets<a class="headerlink" href="#subsets" title="Permalink to this headline">¶</a></h3>
+<p>Similar to a list, a dataframe or series can be sliced to subset the data shown. For example, <code class="docutils literal notranslate"><span class="pre">df[:2]</span></code> will return the first two rows of the dataframe. (This is identical to <code class="docutils literal notranslate"><span class="pre">df.head(2)</span></code>.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>uid</th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alb-000001</td>
+      <td>20100504</td>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+      <td>Closed without arrest</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Alb-000002</td>
+      <td>20100216</td>
+      <td>MONTOYA</td>
+      <td>CAMERON</td>
+      <td>Hispanic</td>
+      <td>17.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.056810</td>
+      <td>-106.715321</td>
+      <td>Closed by arrest</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>uid</th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alb-000001</td>
+      <td>20100504</td>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+      <td>Closed without arrest</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Alb-000002</td>
+      <td>20100216</td>
+      <td>MONTOYA</td>
+      <td>CAMERON</td>
+      <td>Hispanic</td>
+      <td>17.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.056810</td>
+      <td>-106.715321</td>
+      <td>Closed by arrest</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This also works for specific columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;reported_date&#39;</span><span class="p">][:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    20100504
+1    20100216
+2    20100601
+Name: reported_date, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dates">
+<h3>Dates<a class="headerlink" href="#dates" title="Permalink to this headline">¶</a></h3>
+<p>Unfortunately, pandas does not automatically understand that the <code class="docutils literal notranslate"><span class="pre">reported_date</span></code> variable is a date variable. Luckily, we can use the <code class="docutils literal notranslate"><span class="pre">to_datetime</span></code> method to create a new variable from the <code class="docutils literal notranslate"><span class="pre">reported_date</span></code> variable that pandas is able to interpret as a set of dates. The format is <code class="docutils literal notranslate"><span class="pre">%Y%m%d</span></code> because the original date is in the “YYYMMDD” format, and <code class="docutils literal notranslate"><span class="pre">coerce</span></code> places missing values where the data can be translated, rather than stopping variable creation completely.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;reported_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    20100504
+1    20100216
+2    20100601
+3    20100101
+4    20100102
+Name: reported_date, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;reported_date&#39;</span><span class="p">],</span> 
+                            <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> 
+                            <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">][:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   2010-05-04
+1   2010-02-16
+2   2010-06-01
+Name: date, dtype: datetime64[ns]
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the new series, we can extract specific elements, such as the year.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As before, <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> and plots can give some sense of the distribution of the values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2016.0    6290
+2015.0    5334
+2017.0    5048
+2012.0    4908
+2010.0    4610
+2014.0    4608
+2013.0    4599
+2011.0    4562
+2007.0    4268
+2008.0    4215
+2009.0    3735
+Name: year, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">value_counts</span></code> returns a pandas series with an index equal to the original values (in this case the year), and the series values based on the frequency. Since years have an inherent order, it makes sense to sort by the index before we plot them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x118146700&gt;
+</pre></div>
+</div>
+<img alt="../_images/pandas_87_1.png" src="../_images/pandas_87_1.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">crosstab</span></code> can also create groups based on more than one variable for the x or y axis. In that case, you pass a list rather than a single variable or series. To make this more clear, you can create the lists before creating the crosstab.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">]]</span>
+<span class="n">x_vars</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">y_vars</span><span class="p">,</span> <span class="n">x_vars</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>2007.0</th>
+      <th>2008.0</th>
+      <th>2009.0</th>
+      <th>2010.0</th>
+      <th>2011.0</th>
+      <th>2012.0</th>
+      <th>2013.0</th>
+      <th>2014.0</th>
+      <th>2015.0</th>
+      <th>2016.0</th>
+      <th>2017.0</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">AL</th>
+      <th>Birmingham</th>
+      <td>92</td>
+      <td>81</td>
+      <td>65</td>
+      <td>58</td>
+      <td>54</td>
+      <td>68</td>
+      <td>64</td>
+      <td>52</td>
+      <td>78</td>
+      <td>90</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <th>Tulsa</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AZ</th>
+      <th>Phoenix</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>124</td>
+      <td>126</td>
+      <td>124</td>
+      <td>117</td>
+      <td>116</td>
+      <td>146</td>
+      <td>161</td>
+    </tr>
+    <tr>
+      <th rowspan="9" valign="top">CA</th>
+      <th>Fresno</th>
+      <td>52</td>
+      <td>40</td>
+      <td>42</td>
+      <td>45</td>
+      <td>35</td>
+      <td>51</td>
+      <td>39</td>
+      <td>49</td>
+      <td>39</td>
+      <td>39</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>Long Beach</th>
+      <td>39</td>
+      <td>41</td>
+      <td>42</td>
+      <td>33</td>
+      <td>28</td>
+      <td>34</td>
+      <td>37</td>
+      <td>26</td>
+      <td>40</td>
+      <td>37</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>Los Angeles</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>295</td>
+      <td>298</td>
+      <td>298</td>
+      <td>250</td>
+      <td>260</td>
+      <td>282</td>
+      <td>293</td>
+      <td>281</td>
+    </tr>
+    <tr>
+      <th>Oakland</th>
+      <td>0</td>
+      <td>119</td>
+      <td>103</td>
+      <td>91</td>
+      <td>101</td>
+      <td>126</td>
+      <td>89</td>
+      <td>78</td>
+      <td>83</td>
+      <td>85</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>Sacramento</th>
+      <td>44</td>
+      <td>49</td>
+      <td>31</td>
+      <td>34</td>
+      <td>36</td>
+      <td>34</td>
+      <td>34</td>
+      <td>27</td>
+      <td>45</td>
+      <td>40</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>San Bernardino</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>43</td>
+      <td>44</td>
+      <td>45</td>
+      <td>44</td>
+      <td>62</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>San Diego</th>
+      <td>60</td>
+      <td>53</td>
+      <td>41</td>
+      <td>29</td>
+      <td>38</td>
+      <td>48</td>
+      <td>39</td>
+      <td>31</td>
+      <td>38</td>
+      <td>50</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>San Francisco</th>
+      <td>99</td>
+      <td>96</td>
+      <td>45</td>
+      <td>49</td>
+      <td>52</td>
+      <td>69</td>
+      <td>46</td>
+      <td>44</td>
+      <td>51</td>
+      <td>57</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>Stockton</th>
+      <td>30</td>
+      <td>23</td>
+      <td>34</td>
+      <td>50</td>
+      <td>58</td>
+      <td>71</td>
+      <td>32</td>
+      <td>49</td>
+      <td>48</td>
+      <td>49</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>CO</th>
+      <th>Denver</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>38</td>
+      <td>43</td>
+      <td>40</td>
+      <td>42</td>
+      <td>31</td>
+      <td>53</td>
+      <td>57</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>DC</th>
+      <th>Washington</th>
+      <td>181</td>
+      <td>186</td>
+      <td>144</td>
+      <td>132</td>
+      <td>108</td>
+      <td>88</td>
+      <td>104</td>
+      <td>105</td>
+      <td>162</td>
+      <td>135</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">FL</th>
+      <th>Jacksonville</th>
+      <td>131</td>
+      <td>120</td>
+      <td>99</td>
+      <td>90</td>
+      <td>75</td>
+      <td>100</td>
+      <td>103</td>
+      <td>101</td>
+      <td>103</td>
+      <td>114</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <th>Miami</th>
+      <td>79</td>
+      <td>64</td>
+      <td>60</td>
+      <td>69</td>
+      <td>71</td>
+      <td>54</td>
+      <td>69</td>
+      <td>82</td>
+      <td>75</td>
+      <td>59</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>Tampa</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>28</td>
+      <td>0</td>
+      <td>23</td>
+      <td>27</td>
+      <td>28</td>
+      <td>34</td>
+      <td>29</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">GA</th>
+      <th>Atlanta</th>
+      <td>127</td>
+      <td>105</td>
+      <td>80</td>
+      <td>93</td>
+      <td>88</td>
+      <td>83</td>
+      <td>83</td>
+      <td>93</td>
+      <td>95</td>
+      <td>111</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>Savannah</th>
+      <td>17</td>
+      <td>22</td>
+      <td>20</td>
+      <td>15</td>
+      <td>25</td>
+      <td>18</td>
+      <td>21</td>
+      <td>25</td>
+      <td>42</td>
+      <td>37</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>IL</th>
+      <th>Chicago</th>
+      <td>445</td>
+      <td>510</td>
+      <td>457</td>
+      <td>434</td>
+      <td>437</td>
+      <td>505</td>
+      <td>423</td>
+      <td>418</td>
+      <td>487</td>
+      <td>765</td>
+      <td>654</td>
+    </tr>
+    <tr>
+      <th>IN</th>
+      <th>Indianapolis</th>
+      <td>113</td>
+      <td>114</td>
+      <td>99</td>
+      <td>92</td>
+      <td>96</td>
+      <td>96</td>
+      <td>125</td>
+      <td>138</td>
+      <td>144</td>
+      <td>150</td>
+      <td>155</td>
+    </tr>
+    <tr>
+      <th>KY</th>
+      <th>Louisville</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>52</td>
+      <td>53</td>
+      <td>62</td>
+      <td>48</td>
+      <td>58</td>
+      <td>81</td>
+      <td>117</td>
+      <td>105</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">LA</th>
+      <th>Baton Rouge</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>64</td>
+      <td>67</td>
+      <td>49</td>
+      <td>52</td>
+      <td>61</td>
+      <td>44</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>New Orleans</th>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>186</td>
+      <td>211</td>
+      <td>206</td>
+      <td>157</td>
+      <td>163</td>
+      <td>168</td>
+      <td>176</td>
+      <td>163</td>
+    </tr>
+    <tr>
+      <th>MA</th>
+      <th>Boston</th>
+      <td>66</td>
+      <td>66</td>
+      <td>49</td>
+      <td>74</td>
+      <td>64</td>
+      <td>59</td>
+      <td>42</td>
+      <td>55</td>
+      <td>39</td>
+      <td>46</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>MD</th>
+      <th>Baltimore</th>
+      <td>280</td>
+      <td>234</td>
+      <td>236</td>
+      <td>220</td>
+      <td>197</td>
+      <td>216</td>
+      <td>231</td>
+      <td>211</td>
+      <td>342</td>
+      <td>320</td>
+      <td>340</td>
+    </tr>
+    <tr>
+      <th>MI</th>
+      <th>Detroit</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>310</td>
+      <td>346</td>
+      <td>386</td>
+      <td>337</td>
+      <td>294</td>
+      <td>280</td>
+      <td>300</td>
+      <td>266</td>
+    </tr>
+    <tr>
+      <th>MN</th>
+      <th>Minneapolis</th>
+      <td>41</td>
+      <td>35</td>
+      <td>15</td>
+      <td>35</td>
+      <td>35</td>
+      <td>42</td>
+      <td>41</td>
+      <td>33</td>
+      <td>48</td>
+      <td>34</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">MO</th>
+      <th>Kansas City</th>
+      <td>87</td>
+      <td>119</td>
+      <td>103</td>
+      <td>101</td>
+      <td>111</td>
+      <td>105</td>
+      <td>100</td>
+      <td>81</td>
+      <td>112</td>
+      <td>121</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <th>St. Louis</th>
+      <td>140</td>
+      <td>167</td>
+      <td>146</td>
+      <td>142</td>
+      <td>113</td>
+      <td>112</td>
+      <td>121</td>
+      <td>160</td>
+      <td>186</td>
+      <td>188</td>
+      <td>202</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">NC</th>
+      <th>Charlotte</th>
+      <td>72</td>
+      <td>83</td>
+      <td>55</td>
+      <td>61</td>
+      <td>56</td>
+      <td>51</td>
+      <td>54</td>
+      <td>42</td>
+      <td>60</td>
+      <td>68</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>Durham</th>
+      <td>26</td>
+      <td>24</td>
+      <td>22</td>
+      <td>23</td>
+      <td>27</td>
+      <td>21</td>
+      <td>28</td>
+      <td>24</td>
+      <td>37</td>
+      <td>40</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>NE</th>
+      <th>Omaha</th>
+      <td>41</td>
+      <td>44</td>
+      <td>33</td>
+      <td>33</td>
+      <td>39</td>
+      <td>39</td>
+      <td>40</td>
+      <td>32</td>
+      <td>50</td>
+      <td>29</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>NM</th>
+      <th>Albuquerque</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>45</td>
+      <td>38</td>
+      <td>46</td>
+      <td>33</td>
+      <td>28</td>
+      <td>50</td>
+      <td>63</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>NV</th>
+      <th>Las Vegas</th>
+      <td>119</td>
+      <td>133</td>
+      <td>121</td>
+      <td>112</td>
+      <td>88</td>
+      <td>81</td>
+      <td>97</td>
+      <td>124</td>
+      <td>131</td>
+      <td>158</td>
+      <td>217</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">NY</th>
+      <th>Buffalo</th>
+      <td>56</td>
+      <td>37</td>
+      <td>61</td>
+      <td>54</td>
+      <td>36</td>
+      <td>50</td>
+      <td>47</td>
+      <td>63</td>
+      <td>41</td>
+      <td>45</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>335</td>
+      <td>292</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">OH</th>
+      <th>Cincinnati</th>
+      <td>67</td>
+      <td>76</td>
+      <td>56</td>
+      <td>70</td>
+      <td>66</td>
+      <td>53</td>
+      <td>75</td>
+      <td>62</td>
+      <td>36</td>
+      <td>62</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>Columbus</th>
+      <td>79</td>
+      <td>108</td>
+      <td>84</td>
+      <td>105</td>
+      <td>90</td>
+      <td>90</td>
+      <td>93</td>
+      <td>91</td>
+      <td>100</td>
+      <td>104</td>
+      <td>140</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">OK</th>
+      <th>Oklahoma City</th>
+      <td>67</td>
+      <td>56</td>
+      <td>58</td>
+      <td>48</td>
+      <td>59</td>
+      <td>82</td>
+      <td>62</td>
+      <td>43</td>
+      <td>73</td>
+      <td>71</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>Tulsa</th>
+      <td>67</td>
+      <td>56</td>
+      <td>67</td>
+      <td>60</td>
+      <td>54</td>
+      <td>42</td>
+      <td>63</td>
+      <td>50</td>
+      <td>54</td>
+      <td>69</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">PA</th>
+      <th>Philadelphia</th>
+      <td>389</td>
+      <td>332</td>
+      <td>304</td>
+      <td>304</td>
+      <td>322</td>
+      <td>333</td>
+      <td>249</td>
+      <td>249</td>
+      <td>277</td>
+      <td>277</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Pittsburgh</th>
+      <td>64</td>
+      <td>79</td>
+      <td>44</td>
+      <td>61</td>
+      <td>46</td>
+      <td>43</td>
+      <td>46</td>
+      <td>71</td>
+      <td>60</td>
+      <td>59</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">TN</th>
+      <th>Memphis</th>
+      <td>133</td>
+      <td>137</td>
+      <td>132</td>
+      <td>92</td>
+      <td>116</td>
+      <td>134</td>
+      <td>127</td>
+      <td>136</td>
+      <td>134</td>
+      <td>194</td>
+      <td>179</td>
+    </tr>
+    <tr>
+      <th>Nashville</th>
+      <td>77</td>
+      <td>74</td>
+      <td>80</td>
+      <td>56</td>
+      <td>55</td>
+      <td>63</td>
+      <td>40</td>
+      <td>44</td>
+      <td>82</td>
+      <td>85</td>
+      <td>111</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">TX</th>
+      <th>Dallas</th>
+      <td>194</td>
+      <td>168</td>
+      <td>164</td>
+      <td>147</td>
+      <td>135</td>
+      <td>151</td>
+      <td>139</td>
+      <td>121</td>
+      <td>131</td>
+      <td>172</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>Fort Worth</th>
+      <td>58</td>
+      <td>48</td>
+      <td>44</td>
+      <td>64</td>
+      <td>50</td>
+      <td>45</td>
+      <td>56</td>
+      <td>53</td>
+      <td>57</td>
+      <td>65</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>Houston</th>
+      <td>350</td>
+      <td>293</td>
+      <td>286</td>
+      <td>268</td>
+      <td>198</td>
+      <td>217</td>
+      <td>214</td>
+      <td>241</td>
+      <td>303</td>
+      <td>302</td>
+      <td>270</td>
+    </tr>
+    <tr>
+      <th>San Antonio</th>
+      <td>127</td>
+      <td>119</td>
+      <td>100</td>
+      <td>76</td>
+      <td>0</td>
+      <td>0</td>
+      <td>77</td>
+      <td>99</td>
+      <td>94</td>
+      <td>141</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>VA</th>
+      <th>Richmond</th>
+      <td>56</td>
+      <td>31</td>
+      <td>39</td>
+      <td>41</td>
+      <td>37</td>
+      <td>44</td>
+      <td>37</td>
+      <td>42</td>
+      <td>42</td>
+      <td>60</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>wI</th>
+      <th>Milwaukee</th>
+      <td>103</td>
+      <td>71</td>
+      <td>72</td>
+      <td>95</td>
+      <td>89</td>
+      <td>93</td>
+      <td>101</td>
+      <td>87</td>
+      <td>146</td>
+      <td>139</td>
+      <td>119</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Crosstab returns a dataframe with the column and index names from the values in the original dataset. Since a list was passed, the datatframe has a <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code>. This can be useful for cases where you have nested data, like cities with states or annual data on multiple countries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">y_vars</span><span class="p">,</span> <span class="n">x_vars</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FrozenList([&#39;state&#39;, &#39;city&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="index">
+<h3>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>uid</th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+      <th>date</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alb-000001</td>
+      <td>20100504</td>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+      <td>Closed without arrest</td>
+      <td>2010-05-04</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Alb-000002</td>
+      <td>20100216</td>
+      <td>MONTOYA</td>
+      <td>CAMERON</td>
+      <td>Hispanic</td>
+      <td>17.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.056810</td>
+      <td>-106.715321</td>
+      <td>Closed by arrest</td>
+      <td>2010-02-16</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Alb-000003</td>
+      <td>20100601</td>
+      <td>SATTERFIELD</td>
+      <td>VIVIANA</td>
+      <td>White</td>
+      <td>15.0</td>
+      <td>Female</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.086092</td>
+      <td>-106.695568</td>
+      <td>Closed without arrest</td>
+      <td>2010-06-01</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Alb-000004</td>
+      <td>20100101</td>
+      <td>MENDIOLA</td>
+      <td>CARLOS</td>
+      <td>Hispanic</td>
+      <td>32.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.078493</td>
+      <td>-106.556094</td>
+      <td>Closed by arrest</td>
+      <td>2010-01-01</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Alb-000005</td>
+      <td>20100102</td>
+      <td>MULA</td>
+      <td>VIVIAN</td>
+      <td>White</td>
+      <td>72.0</td>
+      <td>Female</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.130357</td>
+      <td>-106.580986</td>
+      <td>Closed without arrest</td>
+      <td>2010-01-02</td>
+      <td>2010.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>By default, the index is a series that starts with 0. If your data includes a set of unique identifiers, however, it is helpful to use this as the index, especially if you intend on merging your data with other data sources. In this dataframe, each row has a unique value for <code class="docutils literal notranslate"><span class="pre">uid</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;uid&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+      <th>date</th>
+      <th>year</th>
+    </tr>
+    <tr>
+      <th>uid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alb-000001</th>
+      <td>20100504</td>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+      <td>Closed without arrest</td>
+      <td>2010-05-04</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>Alb-000002</th>
+      <td>20100216</td>
+      <td>MONTOYA</td>
+      <td>CAMERON</td>
+      <td>Hispanic</td>
+      <td>17.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.056810</td>
+      <td>-106.715321</td>
+      <td>Closed by arrest</td>
+      <td>2010-02-16</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>Alb-000003</th>
+      <td>20100601</td>
+      <td>SATTERFIELD</td>
+      <td>VIVIANA</td>
+      <td>White</td>
+      <td>15.0</td>
+      <td>Female</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.086092</td>
+      <td>-106.695568</td>
+      <td>Closed without arrest</td>
+      <td>2010-06-01</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>Alb-000004</th>
+      <td>20100101</td>
+      <td>MENDIOLA</td>
+      <td>CARLOS</td>
+      <td>Hispanic</td>
+      <td>32.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.078493</td>
+      <td>-106.556094</td>
+      <td>Closed by arrest</td>
+      <td>2010-01-01</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>Alb-000005</th>
+      <td>20100102</td>
+      <td>MULA</td>
+      <td>VIVIAN</td>
+      <td>White</td>
+      <td>72.0</td>
+      <td>Female</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.130357</td>
+      <td>-106.580986</td>
+      <td>Closed without arrest</td>
+      <td>2010-01-02</td>
+      <td>2010.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="titanic-exercise-3">
+<h2>Titanic Exercise 3<a class="headerlink" href="#titanic-exercise-3" title="Permalink to this headline">¶</a></h2>
+<p>In your Titanic dataframe, set the index to the <code>PassengerId</code> column. Confirm that it did want you wanted it to do.</p>
+<div class="section" id="subsetting">
+<h3>Subsetting<a class="headerlink" href="#subsetting" title="Permalink to this headline">¶</a></h3>
+<p>You can view a subset of a dataframe based on the value of a column.</p>
+<p>Let’s say that you wanted to look at the cases where the victim’s first name was “Juan”. You could create a new series which is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> for each case.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_first&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;JUAN&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>uid
+Alb-000001     True
+Alb-000002    False
+Alb-000003    False
+Alb-000004    False
+Alb-000005    False
+              ...  
+Was-001380    False
+Was-001381    False
+Was-001382    False
+Was-001383    False
+Was-001384    False
+Name: victim_first, Length: 52179, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>You could store this new true/false series. If you placed this in brackets after the name of the dataframe, pandas would display only the rows with a True value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_juan</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_first&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;JUAN&#39;</span>
+<span class="n">df</span><span class="p">[</span><span class="n">is_juan</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+      <th>date</th>
+      <th>year</th>
+    </tr>
+    <tr>
+      <th>uid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alb-000001</th>
+      <td>20100504</td>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+      <td>Closed without arrest</td>
+      <td>2010-05-04</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>Alb-000315</th>
+      <td>20170207</td>
+      <td>ROMERO</td>
+      <td>JUAN</td>
+      <td>White</td>
+      <td>26.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.080584</td>
+      <td>-106.618029</td>
+      <td>Open/No arrest</td>
+      <td>2017-02-07</td>
+      <td>2017.0</td>
+    </tr>
+    <tr>
+      <th>Bal-002139</th>
+      <td>20090125</td>
+      <td>JOHNSON</td>
+      <td>JUAN</td>
+      <td>Black</td>
+      <td>14.0</td>
+      <td>Male</td>
+      <td>Baltimore</td>
+      <td>MD</td>
+      <td>39.339345</td>
+      <td>-76.662483</td>
+      <td>Closed by arrest</td>
+      <td>2009-01-25</td>
+      <td>2009.0</td>
+    </tr>
+    <tr>
+      <th>Bat-000099</th>
+      <td>20120701</td>
+      <td>LOPEZ</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>26.0</td>
+      <td>Male</td>
+      <td>Baton Rouge</td>
+      <td>LA</td>
+      <td>30.479034</td>
+      <td>-91.104891</td>
+      <td>Open/No arrest</td>
+      <td>2012-07-01</td>
+      <td>2012.0</td>
+    </tr>
+    <tr>
+      <th>Bat-000219</th>
+      <td>20141116</td>
+      <td>JOSEPH</td>
+      <td>JUAN</td>
+      <td>Black</td>
+      <td>27.0</td>
+      <td>Male</td>
+      <td>Baton Rouge</td>
+      <td>LA</td>
+      <td>30.419692</td>
+      <td>-91.137286</td>
+      <td>Closed by arrest</td>
+      <td>2014-11-16</td>
+      <td>2014.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Tul-000247</th>
+      <td>20080322</td>
+      <td>RODRIGUEZ</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>19.0</td>
+      <td>Male</td>
+      <td>Tulsa</td>
+      <td>OK</td>
+      <td>36.186102</td>
+      <td>-95.984547</td>
+      <td>Closed by arrest</td>
+      <td>2008-03-22</td>
+      <td>2008.0</td>
+    </tr>
+    <tr>
+      <th>Tul-000253</th>
+      <td>20080509</td>
+      <td>CASTILLO</td>
+      <td>JUAN</td>
+      <td>White</td>
+      <td>NaN</td>
+      <td>Male</td>
+      <td>Tulsa</td>
+      <td>OK</td>
+      <td>36.058258</td>
+      <td>-95.917059</td>
+      <td>Open/No arrest</td>
+      <td>2008-05-09</td>
+      <td>2008.0</td>
+    </tr>
+    <tr>
+      <th>Tul-000605</th>
+      <td>20140211</td>
+      <td>MENDOZA</td>
+      <td>JUAN</td>
+      <td>White</td>
+      <td>34.0</td>
+      <td>Male</td>
+      <td>Tulsa</td>
+      <td>OK</td>
+      <td>36.096514</td>
+      <td>-95.896020</td>
+      <td>Closed by arrest</td>
+      <td>2014-02-11</td>
+      <td>2014.0</td>
+    </tr>
+    <tr>
+      <th>Tul-000741</th>
+      <td>20160529</td>
+      <td>GARCIALICEA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>35.0</td>
+      <td>Male</td>
+      <td>Tulsa</td>
+      <td>OK</td>
+      <td>36.129921</td>
+      <td>-95.850461</td>
+      <td>Open/No arrest</td>
+      <td>2016-05-29</td>
+      <td>2016.0</td>
+    </tr>
+    <tr>
+      <th>Was-000392</th>
+      <td>20120118</td>
+      <td>PAREDES</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>45.0</td>
+      <td>Male</td>
+      <td>Washington</td>
+      <td>DC</td>
+      <td>38.930813</td>
+      <td>-77.032506</td>
+      <td>Closed by arrest</td>
+      <td>2012-01-18</td>
+      <td>2012.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>183 rows × 13 columns</p>
+</div></div></div>
+</div>
+<p>More commonly, the two statements are combined.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_first&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;JUAN&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+      <th>date</th>
+      <th>year</th>
+    </tr>
+    <tr>
+      <th>uid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alb-000001</th>
+      <td>20100504</td>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+      <td>Closed without arrest</td>
+      <td>2010-05-04</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>Alb-000315</th>
+      <td>20170207</td>
+      <td>ROMERO</td>
+      <td>JUAN</td>
+      <td>White</td>
+      <td>26.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.080584</td>
+      <td>-106.618029</td>
+      <td>Open/No arrest</td>
+      <td>2017-02-07</td>
+      <td>2017.0</td>
+    </tr>
+    <tr>
+      <th>Bal-002139</th>
+      <td>20090125</td>
+      <td>JOHNSON</td>
+      <td>JUAN</td>
+      <td>Black</td>
+      <td>14.0</td>
+      <td>Male</td>
+      <td>Baltimore</td>
+      <td>MD</td>
+      <td>39.339345</td>
+      <td>-76.662483</td>
+      <td>Closed by arrest</td>
+      <td>2009-01-25</td>
+      <td>2009.0</td>
+    </tr>
+    <tr>
+      <th>Bat-000099</th>
+      <td>20120701</td>
+      <td>LOPEZ</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>26.0</td>
+      <td>Male</td>
+      <td>Baton Rouge</td>
+      <td>LA</td>
+      <td>30.479034</td>
+      <td>-91.104891</td>
+      <td>Open/No arrest</td>
+      <td>2012-07-01</td>
+      <td>2012.0</td>
+    </tr>
+    <tr>
+      <th>Bat-000219</th>
+      <td>20141116</td>
+      <td>JOSEPH</td>
+      <td>JUAN</td>
+      <td>Black</td>
+      <td>27.0</td>
+      <td>Male</td>
+      <td>Baton Rouge</td>
+      <td>LA</td>
+      <td>30.419692</td>
+      <td>-91.137286</td>
+      <td>Closed by arrest</td>
+      <td>2014-11-16</td>
+      <td>2014.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Tul-000247</th>
+      <td>20080322</td>
+      <td>RODRIGUEZ</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>19.0</td>
+      <td>Male</td>
+      <td>Tulsa</td>
+      <td>OK</td>
+      <td>36.186102</td>
+      <td>-95.984547</td>
+      <td>Closed by arrest</td>
+      <td>2008-03-22</td>
+      <td>2008.0</td>
+    </tr>
+    <tr>
+      <th>Tul-000253</th>
+      <td>20080509</td>
+      <td>CASTILLO</td>
+      <td>JUAN</td>
+      <td>White</td>
+      <td>NaN</td>
+      <td>Male</td>
+      <td>Tulsa</td>
+      <td>OK</td>
+      <td>36.058258</td>
+      <td>-95.917059</td>
+      <td>Open/No arrest</td>
+      <td>2008-05-09</td>
+      <td>2008.0</td>
+    </tr>
+    <tr>
+      <th>Tul-000605</th>
+      <td>20140211</td>
+      <td>MENDOZA</td>
+      <td>JUAN</td>
+      <td>White</td>
+      <td>34.0</td>
+      <td>Male</td>
+      <td>Tulsa</td>
+      <td>OK</td>
+      <td>36.096514</td>
+      <td>-95.896020</td>
+      <td>Closed by arrest</td>
+      <td>2014-02-11</td>
+      <td>2014.0</td>
+    </tr>
+    <tr>
+      <th>Tul-000741</th>
+      <td>20160529</td>
+      <td>GARCIALICEA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>35.0</td>
+      <td>Male</td>
+      <td>Tulsa</td>
+      <td>OK</td>
+      <td>36.129921</td>
+      <td>-95.850461</td>
+      <td>Open/No arrest</td>
+      <td>2016-05-29</td>
+      <td>2016.0</td>
+    </tr>
+    <tr>
+      <th>Was-000392</th>
+      <td>20120118</td>
+      <td>PAREDES</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>45.0</td>
+      <td>Male</td>
+      <td>Washington</td>
+      <td>DC</td>
+      <td>38.930813</td>
+      <td>-77.032506</td>
+      <td>Closed by arrest</td>
+      <td>2012-01-18</td>
+      <td>2012.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>183 rows × 13 columns</p>
+</div></div></div>
+</div>
+<p>With this method of subsetting, pandas isn’t return a new dataframe; it is simply hiding some of the rows. If you want to create a new dataframe based on this subset, you’ll need to append <code class="docutils literal notranslate"><span class="pre">copy()</span></code> to the end.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_first&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;JUAN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+      <th>date</th>
+      <th>year</th>
+    </tr>
+    <tr>
+      <th>uid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alb-000001</th>
+      <td>20100504</td>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+      <td>Closed without arrest</td>
+      <td>2010-05-04</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>Alb-000315</th>
+      <td>20170207</td>
+      <td>ROMERO</td>
+      <td>JUAN</td>
+      <td>White</td>
+      <td>26.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.080584</td>
+      <td>-106.618029</td>
+      <td>Open/No arrest</td>
+      <td>2017-02-07</td>
+      <td>2017.0</td>
+    </tr>
+    <tr>
+      <th>Bal-002139</th>
+      <td>20090125</td>
+      <td>JOHNSON</td>
+      <td>JUAN</td>
+      <td>Black</td>
+      <td>14.0</td>
+      <td>Male</td>
+      <td>Baltimore</td>
+      <td>MD</td>
+      <td>39.339345</td>
+      <td>-76.662483</td>
+      <td>Closed by arrest</td>
+      <td>2009-01-25</td>
+      <td>2009.0</td>
+    </tr>
+    <tr>
+      <th>Bat-000099</th>
+      <td>20120701</td>
+      <td>LOPEZ</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>26.0</td>
+      <td>Male</td>
+      <td>Baton Rouge</td>
+      <td>LA</td>
+      <td>30.479034</td>
+      <td>-91.104891</td>
+      <td>Open/No arrest</td>
+      <td>2012-07-01</td>
+      <td>2012.0</td>
+    </tr>
+    <tr>
+      <th>Bat-000219</th>
+      <td>20141116</td>
+      <td>JOSEPH</td>
+      <td>JUAN</td>
+      <td>Black</td>
+      <td>27.0</td>
+      <td>Male</td>
+      <td>Baton Rouge</td>
+      <td>LA</td>
+      <td>30.419692</td>
+      <td>-91.137286</td>
+      <td>Closed by arrest</td>
+      <td>2014-11-16</td>
+      <td>2014.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As this selection method returns a dataframe, it can be stored. The following creates two dataframes, containing just the cases from 2016 and 2017 respectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_2017</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2017</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_2016</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2016</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+
+<span class="n">df_2017</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2017.0    5048
+Name: year, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_2016</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2016.0    6290
+Name: year, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">value_counts</span></code> confirms that you’ve grabbed the correct cases.</p>
+<p>Alternatively, you may want to limit your dataset by column. In this case, you create a list of the columns you want. This list is also placed in brackets after the name of the dataframe.</p>
+</div>
+</div>
+<div class="section" id="titanic-exercise-4">
+<h2>Titanic Exercise 4<a class="headerlink" href="#titanic-exercise-4" title="Permalink to this headline">¶</a></h2>
+<p>Create a new dataframe with just the female passengers. Check your work.</p>
+<div class="section" id="more-subsets">
+<h3>More subsets<a class="headerlink" href="#more-subsets" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;victim_last&#39;</span><span class="p">,</span> <span class="s1">&#39;victim_first&#39;</span><span class="p">,</span> <span class="s1">&#39;victim_race&#39;</span><span class="p">,</span> <span class="s1">&#39;victim_age&#39;</span><span class="p">,</span> <span class="s1">&#39;victim_sex&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">columns_to_keep</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+    </tr>
+    <tr>
+      <th>uid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alb-000001</th>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Alb-000002</th>
+      <td>MONTOYA</td>
+      <td>CAMERON</td>
+      <td>Hispanic</td>
+      <td>17.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Alb-000003</th>
+      <td>SATTERFIELD</td>
+      <td>VIVIANA</td>
+      <td>White</td>
+      <td>15.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>Alb-000004</th>
+      <td>MENDIOLA</td>
+      <td>CARLOS</td>
+      <td>Hispanic</td>
+      <td>32.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Alb-000005</th>
+      <td>MULA</td>
+      <td>VIVIAN</td>
+      <td>White</td>
+      <td>72.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Was-001380</th>
+      <td>WILLIAMS</td>
+      <td>EVAN</td>
+      <td>Black</td>
+      <td>29.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Was-001381</th>
+      <td>SMITH</td>
+      <td>DEON</td>
+      <td>Black</td>
+      <td>19.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Was-001382</th>
+      <td>WASHINGTON</td>
+      <td>WILLIE</td>
+      <td>Black</td>
+      <td>23.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Was-001383</th>
+      <td>BARNES</td>
+      <td>MARCUS</td>
+      <td>Black</td>
+      <td>24.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Was-001384</th>
+      <td>JACKSON</td>
+      <td>KEVIN</td>
+      <td>Black</td>
+      <td>17.0</td>
+      <td>Male</td>
+    </tr>
+  </tbody>
+</table>
+<p>52179 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>As before, you can you use <code class="docutils literal notranslate"><span class="pre">copy</span></code> to create a new dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">victim_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">columns_to_keep</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">victim_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+    </tr>
+    <tr>
+      <th>uid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alb-000001</th>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Alb-000002</th>
+      <td>MONTOYA</td>
+      <td>CAMERON</td>
+      <td>Hispanic</td>
+      <td>17.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Alb-000003</th>
+      <td>SATTERFIELD</td>
+      <td>VIVIANA</td>
+      <td>White</td>
+      <td>15.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>Alb-000004</th>
+      <td>MENDIOLA</td>
+      <td>CARLOS</td>
+      <td>Hispanic</td>
+      <td>32.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Alb-000005</th>
+      <td>MULA</td>
+      <td>VIVIAN</td>
+      <td>White</td>
+      <td>72.0</td>
+      <td>Female</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As with the row selection, you don’t need to store the column names in a list first. By convention, these two steps are combined. However, combining the steps does create an awkward pair of double brackets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;city&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+    </tr>
+    <tr>
+      <th>uid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alb-000001</th>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+    </tr>
+    <tr>
+      <th>Alb-000002</th>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.056810</td>
+      <td>-106.715321</td>
+    </tr>
+    <tr>
+      <th>Alb-000003</th>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.086092</td>
+      <td>-106.695568</td>
+    </tr>
+    <tr>
+      <th>Alb-000004</th>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.078493</td>
+      <td>-106.556094</td>
+    </tr>
+    <tr>
+      <th>Alb-000005</th>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.130357</td>
+      <td>-106.580986</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="merging">
+<h3>Merging<a class="headerlink" href="#merging" title="Permalink to this headline">¶</a></h3>
+<p>There are several different ways to combine datasets. The most straightforward is to merge two different datasets that share a common key. To merge <code class="docutils literal notranslate"><span class="pre">place_df</span></code> with  <code class="docutils literal notranslate"><span class="pre">victim_df</span></code>, for example, you can use the datframe <code class="docutils literal notranslate"><span class="pre">merge</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merged_df</span> <span class="o">=</span> <span class="n">place_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">victim_df</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">merged_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+    </tr>
+    <tr>
+      <th>uid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alb-000001</th>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Alb-000002</th>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.056810</td>
+      <td>-106.715321</td>
+      <td>MONTOYA</td>
+      <td>CAMERON</td>
+      <td>Hispanic</td>
+      <td>17.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Alb-000003</th>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.086092</td>
+      <td>-106.695568</td>
+      <td>SATTERFIELD</td>
+      <td>VIVIANA</td>
+      <td>White</td>
+      <td>15.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>Alb-000004</th>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.078493</td>
+      <td>-106.556094</td>
+      <td>MENDIOLA</td>
+      <td>CARLOS</td>
+      <td>Hispanic</td>
+      <td>32.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>Alb-000005</th>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.130357</td>
+      <td>-106.580986</td>
+      <td>MULA</td>
+      <td>VIVIAN</td>
+      <td>White</td>
+      <td>72.0</td>
+      <td>Female</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="stacking-dataframes">
+<h3>Stacking dataframes<a class="headerlink" href="#stacking-dataframes" title="Permalink to this headline">¶</a></h3>
+<p>We can also combine datasets using through <em>concatenation</em>. Using the pandas <code class="docutils literal notranslate"><span class="pre">concat</span></code> method, we can join pandas objects along a specified axis. As an example, look at the dataframe we created looking only at the year 2016:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_2016</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2016</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">df_2016</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6290
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s say we decide we’d like to combine this dataframe with a dataframe looking at the year 2017:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_2017</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2017</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">df_2017</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5048
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">concat</span></code> to combine the dataframes into a single dataframe, <code class="docutils literal notranslate"><span class="pre">recent_df</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recent_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_2017</span><span class="p">,</span> <span class="n">df_2016</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">recent_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11338
+</pre></div>
+</div>
+</div>
+</div>
+<p>To return to a previous example, we can use <code class="docutils literal notranslate"><span class="pre">concat</span></code> to merge our victim and location dataframes as well. Here, we’ll want to specify that we’re concatenating along colums. we’ll indicate this by setting <code class="docutils literal notranslate"><span class="pre">axis</span></code> to 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">victim_df</span><span class="p">,</span> <span class="n">place_df</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+    </tr>
+    <tr>
+      <th>uid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alb-000001</th>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+    </tr>
+    <tr>
+      <th>Alb-000002</th>
+      <td>MONTOYA</td>
+      <td>CAMERON</td>
+      <td>Hispanic</td>
+      <td>17.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.056810</td>
+      <td>-106.715321</td>
+    </tr>
+    <tr>
+      <th>Alb-000003</th>
+      <td>SATTERFIELD</td>
+      <td>VIVIANA</td>
+      <td>White</td>
+      <td>15.0</td>
+      <td>Female</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.086092</td>
+      <td>-106.695568</td>
+    </tr>
+    <tr>
+      <th>Alb-000004</th>
+      <td>MENDIOLA</td>
+      <td>CARLOS</td>
+      <td>Hispanic</td>
+      <td>32.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.078493</td>
+      <td>-106.556094</td>
+    </tr>
+    <tr>
+      <th>Alb-000005</th>
+      <td>MULA</td>
+      <td>VIVIAN</td>
+      <td>White</td>
+      <td>72.0</td>
+      <td>Female</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.130357</td>
+      <td>-106.580986</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Was-001380</th>
+      <td>WILLIAMS</td>
+      <td>EVAN</td>
+      <td>Black</td>
+      <td>29.0</td>
+      <td>Male</td>
+      <td>Washington</td>
+      <td>DC</td>
+      <td>38.828704</td>
+      <td>-77.002075</td>
+    </tr>
+    <tr>
+      <th>Was-001381</th>
+      <td>SMITH</td>
+      <td>DEON</td>
+      <td>Black</td>
+      <td>19.0</td>
+      <td>Male</td>
+      <td>Washington</td>
+      <td>DC</td>
+      <td>38.822852</td>
+      <td>-77.001725</td>
+    </tr>
+    <tr>
+      <th>Was-001382</th>
+      <td>WASHINGTON</td>
+      <td>WILLIE</td>
+      <td>Black</td>
+      <td>23.0</td>
+      <td>Male</td>
+      <td>Washington</td>
+      <td>DC</td>
+      <td>38.828025</td>
+      <td>-77.002511</td>
+    </tr>
+    <tr>
+      <th>Was-001383</th>
+      <td>BARNES</td>
+      <td>MARCUS</td>
+      <td>Black</td>
+      <td>24.0</td>
+      <td>Male</td>
+      <td>Washington</td>
+      <td>DC</td>
+      <td>38.820476</td>
+      <td>-77.008640</td>
+    </tr>
+    <tr>
+      <th>Was-001384</th>
+      <td>JACKSON</td>
+      <td>KEVIN</td>
+      <td>Black</td>
+      <td>17.0</td>
+      <td>Male</td>
+      <td>Washington</td>
+      <td>DC</td>
+      <td>38.866689</td>
+      <td>-76.982409</td>
+    </tr>
+  </tbody>
+</table>
+<p>52179 rows × 9 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="new-features">
+<h3>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h3>
+<p>We can use the features already available in our dataframe to create additional features. For example, if we wanted to create a feature representing victims’ year of birth, we could define a feature generating the difference between the age of homocide victims and the years homocides occurred.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;birth_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_age_numeric&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">~/opt/anaconda3/envs/tmwp/lib/python3.8/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2645</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2646</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2647</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: &#39;victim_age_numeric&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">67</span><span class="o">-</span><span class="mi">02943</span><span class="n">c018a37</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;birth_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_age_numeric&#39;</span><span class="p">]</span>
+
+<span class="nn">~/opt/anaconda3/envs/tmwp/lib/python3.8/site-packages/pandas/core/frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2798</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2799</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2800</span>             <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2801</span>             <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2802</span>                 <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+
+<span class="nn">~/opt/anaconda3/envs/tmwp/lib/python3.8/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2646</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2647</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2648</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maybe_cast_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">2649</span>         <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">([</span><span class="n">key</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2650</span>         <span class="k">if</span> <span class="n">indexer</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">indexer</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: &#39;victim_age_numeric&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;birth_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">~/opt/anaconda3/envs/tmwp/lib/python3.8/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2645</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2646</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2647</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: &#39;birth_year&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">68</span><span class="o">-</span><span class="mi">0</span><span class="n">b8b931b4bd8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;birth_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="nn">~/opt/anaconda3/envs/tmwp/lib/python3.8/site-packages/pandas/core/frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2798</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2799</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2800</span>             <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2801</span>             <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2802</span>                 <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+
+<span class="nn">~/opt/anaconda3/envs/tmwp/lib/python3.8/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2646</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2647</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2648</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maybe_cast_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">2649</span>         <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">([</span><span class="n">key</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2650</span>         <span class="k">if</span> <span class="n">indexer</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">indexer</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: &#39;birth_year&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another example might involve generating a feature indicating whether or not homocide victims were minors:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;minor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_age&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;minor&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>uid
+Alb-000001    False
+Alb-000002     True
+Alb-000003     True
+Alb-000004    False
+Alb-000005    False
+Alb-000006    False
+Alb-000007    False
+Alb-000008    False
+Alb-000009    False
+Alb-000010    False
+Name: minor, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">mean</span></code> pandas method, we’re then able to determine the proportion of homocide victims who were minors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;minor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10931600835585197
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="titanic-exercise-5">
+<h2>Titanic Exercise 5<a class="headerlink" href="#titanic-exercise-5" title="Permalink to this headline">¶</a></h2>
+<p>Create a new variable in your Titanic dataframe that identifies people who paid fares in the top 25% of all fares paid.</p>
+<div class="section" id="back-to-some-pandas-string-manipulation-fun">
+<h3>Back to some pandas string manipulation fun.<a class="headerlink" href="#back-to-some-pandas-string-manipulation-fun" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">title_case</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title_case</span><span class="p">(</span><span class="s1">&#39;JUAN&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Juan&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-apply-magic">
+<h3>The apply magic<a class="headerlink" href="#the-apply-magic" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_first&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">title_case</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>uid
+Alb-000001       Juan
+Alb-000002    Cameron
+Alb-000003    Viviana
+Alb-000004     Carlos
+Alb-000005     Vivian
+               ...   
+Was-001380       Evan
+Was-001381       Deon
+Was-001382     Willie
+Was-001383     Marcus
+Was-001384      Kevin
+Name: victim_first, Length: 52179, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_first2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_first&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">title_case</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_first2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>uid
+Alb-000001         Juan
+Alb-000002      Cameron
+Alb-000003      Viviana
+Alb-000004       Carlos
+Alb-000005       Vivian
+Alb-000006    Geraldine
+Alb-000007        David
+Alb-000008       Connie
+Alb-000009      Gustavo
+Alb-000010       Israel
+Name: victim_first2, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;victim_first&#39;</span><span class="p">,</span> <span class="s1">&#39;victim_first2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>victim_first</th>
+      <th>victim_first2</th>
+    </tr>
+    <tr>
+      <th>uid</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alb-000001</th>
+      <td>JUAN</td>
+      <td>Juan</td>
+    </tr>
+    <tr>
+      <th>Alb-000002</th>
+      <td>CAMERON</td>
+      <td>Cameron</td>
+    </tr>
+    <tr>
+      <th>Alb-000003</th>
+      <td>VIVIANA</td>
+      <td>Viviana</td>
+    </tr>
+    <tr>
+      <th>Alb-000004</th>
+      <td>CARLOS</td>
+      <td>Carlos</td>
+    </tr>
+    <tr>
+      <th>Alb-000005</th>
+      <td>VIVIAN</td>
+      <td>Vivian</td>
+    </tr>
+    <tr>
+      <th>Alb-000006</th>
+      <td>GERALDINE</td>
+      <td>Geraldine</td>
+    </tr>
+    <tr>
+      <th>Alb-000007</th>
+      <td>DAVID</td>
+      <td>David</td>
+    </tr>
+    <tr>
+      <th>Alb-000008</th>
+      <td>CONNIE</td>
+      <td>Connie</td>
+    </tr>
+    <tr>
+      <th>Alb-000009</th>
+      <td>GUSTAVO</td>
+      <td>Gustavo</td>
+    </tr>
+    <tr>
+      <th>Alb-000010</th>
+      <td>ISRAEL</td>
+      <td>Israel</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="titanic-exercise-6">
+<h2>Titanic Exercise 6<a class="headerlink" href="#titanic-exercise-6" title="Permalink to this headline">¶</a></h2>
+<p>Write a function that extracts the last name from the name field on your Titanic dataframe.
+Create a new variable called <code>Family Name</code> to store the results. What is the most common family name?</p>
+<p>Working on more than one column</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">victim_name</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;victim_first&#39;</span><span class="p">]</span>
+    <span class="n">last_name</span>  <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;victim_last&#39;</span><span class="p">]</span>
+    <span class="n">name</span>       <span class="o">=</span> <span class="n">last_name</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="n">first_name</span>
+    <span class="n">name</span>       <span class="o">=</span> <span class="n">title_case</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">victim_name</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>uid
+Alb-000001                  Garcia, Juan
+Alb-000002              Montoya, Cameron
+Alb-000003          Satterfield, Viviana
+Alb-000004              Mendiola, Carlos
+Alb-000005                  Mula, Vivian
+Alb-000006               Book, Geraldine
+Alb-000007              Maldonado, David
+Alb-000008             Maldonado, Connie
+Alb-000009         Martin-Leyva, Gustavo
+Alb-000010               Herrera, Israel
+Alb-000011    Barrius-Campanioni, Hector
+Alb-000012                  Lujan, Kevin
+Alb-000013               Collamore, John
+Alb-000014               Chiquito, Corin
+Alb-000015                Torres, Hector
+Alb-000016                Gray, Stefania
+Alb-000017                   Leyva, Joel
+Alb-000018                  David, Larry
+Alb-000019              Brito, Elizabeth
+Alb-000020              Chavez, Greg Sr.
+Alb-000021                  King, Tevion
+Alb-000022                Boykin, Cedric
+Alb-000023              Barragan, Miguel
+Alb-000024                  Ford, Luther
+Alb-000025                Wronski, Viola
+Alb-000026            Ashford, Guadalupe
+Alb-000027              Turner, Michelle
+Alb-000028            Cunningham, Sharon
+Alb-000029              Nguyen, Selenavi
+Alb-000030                  Valdez, Bill
+                         ...            
+Was-001353               Turner, Gabriel
+Was-001355               Meriedy, Thomas
+Was-001356                     Cook, Joe
+Was-001357             Phillips, Scorpio
+Was-001358                Harris, Zoruan
+Was-001359                 Pratt, Antina
+Was-001360               Silver, Orlando
+Was-001361                  Rezene, Noel
+Was-001362               Drayton, Javion
+Was-001363           Mccullough, Antoine
+Was-001365                Buie, Samuelle
+Was-001366             Jennings, Rassaan
+Was-001367               Tyler, Marquett
+Was-001368               Garris, Rudolph
+Was-001369              Dansbury, Aubrey
+Was-001370                 Haney, Jaquan
+Was-001371                Hamilton, Dana
+Was-001372               Wright, Rashawn
+Was-001373            Blackwell, Westley
+Was-001374               Dowtin, Herbert
+Was-001375             Medlay, Demetrius
+Was-001376             Stephens, Judonne
+Was-001377              Peoples, Darnell
+Was-001378                    Ivey, Paul
+Was-001379                Harris, Sharod
+Was-001380                Williams, Evan
+Was-001381                   Smith, Deon
+Was-001382            Washington, Willie
+Was-001383                Barnes, Marcus
+Was-001384                Jackson, Kevin
+Length: 52179, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;victim_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">victim_name</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>reported_date</th>
+      <th>victim_last</th>
+      <th>victim_first</th>
+      <th>victim_race</th>
+      <th>victim_age</th>
+      <th>victim_sex</th>
+      <th>city</th>
+      <th>state</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>disposition</th>
+      <th>victim_age_numeric</th>
+      <th>date</th>
+      <th>year</th>
+      <th>birth_year</th>
+      <th>minor</th>
+      <th>victim_first2</th>
+      <th>victim_name</th>
+    </tr>
+    <tr>
+      <th>uid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alb-000001</th>
+      <td>20100504</td>
+      <td>GARCIA</td>
+      <td>JUAN</td>
+      <td>Hispanic</td>
+      <td>78.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.095788</td>
+      <td>-106.538555</td>
+      <td>Closed without arrest</td>
+      <td>78.0</td>
+      <td>2010-05-04</td>
+      <td>2010.0</td>
+      <td>1932.0</td>
+      <td>False</td>
+      <td>Juan</td>
+      <td>Garcia, Juan</td>
+    </tr>
+    <tr>
+      <th>Alb-000002</th>
+      <td>20100216</td>
+      <td>MONTOYA</td>
+      <td>CAMERON</td>
+      <td>Hispanic</td>
+      <td>17.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.056810</td>
+      <td>-106.715321</td>
+      <td>Closed by arrest</td>
+      <td>17.0</td>
+      <td>2010-02-16</td>
+      <td>2010.0</td>
+      <td>1993.0</td>
+      <td>True</td>
+      <td>Cameron</td>
+      <td>Montoya, Cameron</td>
+    </tr>
+    <tr>
+      <th>Alb-000003</th>
+      <td>20100601</td>
+      <td>SATTERFIELD</td>
+      <td>VIVIANA</td>
+      <td>White</td>
+      <td>15.0</td>
+      <td>Female</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.086092</td>
+      <td>-106.695568</td>
+      <td>Closed without arrest</td>
+      <td>15.0</td>
+      <td>2010-06-01</td>
+      <td>2010.0</td>
+      <td>1995.0</td>
+      <td>True</td>
+      <td>Viviana</td>
+      <td>Satterfield, Viviana</td>
+    </tr>
+    <tr>
+      <th>Alb-000004</th>
+      <td>20100101</td>
+      <td>MENDIOLA</td>
+      <td>CARLOS</td>
+      <td>Hispanic</td>
+      <td>32.0</td>
+      <td>Male</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.078493</td>
+      <td>-106.556094</td>
+      <td>Closed by arrest</td>
+      <td>32.0</td>
+      <td>2010-01-01</td>
+      <td>2010.0</td>
+      <td>1978.0</td>
+      <td>False</td>
+      <td>Carlos</td>
+      <td>Mendiola, Carlos</td>
+    </tr>
+    <tr>
+      <th>Alb-000005</th>
+      <td>20100102</td>
+      <td>MULA</td>
+      <td>VIVIAN</td>
+      <td>White</td>
+      <td>72.0</td>
+      <td>Female</td>
+      <td>Albuquerque</td>
+      <td>NM</td>
+      <td>35.130357</td>
+      <td>-106.580986</td>
+      <td>Closed without arrest</td>
+      <td>72.0</td>
+      <td>2010-01-02</td>
+      <td>2010.0</td>
+      <td>1938.0</td>
+      <td>False</td>
+      <td>Vivian</td>
+      <td>Mula, Vivian</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="python.html" title="previous page">Python 101</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neal Caren and Katie Furl<br/>
+        
+          <div class="extra_footer">
+            Text Mining With Python
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

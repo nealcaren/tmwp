@@ -1,6 +1,11 @@
-- file: readme
+- file: index
 
 - part: Getting Started
   chapters:
-    /notebooks/setup
-    /notebooks/using-jupyter-notebooks
+  - file: /notebooks/setup
+  - file: /notebooks/using-jupyter-notebooks
+  
+- part: Basics
+  chapters:
+  - file: /notebooks/python
+  - file: /notebooks/pandas

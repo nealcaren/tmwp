@@ -1,0 +1,438 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using Jupyter Notebooks &#8212; Text Mining With Python</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/spanels-index--0afa1ebdab0bb23b98b56d34c23d9f57.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/spanels-variables--ffc7f74dcb1b9eecba2dbcbc22818714.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python 101" href="python.html" />
+    <link rel="prev" title="Setup" href="setup.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Text Mining With Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Text Mining with Python
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="setup.html">
+   Setup
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Using Jupyter Notebooks
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html">
+   Python 101
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#strings">
+   Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#slicing">
+   Slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#numbers">
+   Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#lists">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#dictionaries">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#spaces">
+   Spaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#loops">
+   Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html#functions">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html">
+   pandas 101
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html#reading-data">
+   Reading data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html#learning-about-your-dataframe">
+   Learning about your dataframe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html#working-with-variables">
+   Working with variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html#plots">
+   Plots
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/using-jupyter-notebooks.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/notebooks/using-jupyter-notebooks.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/notebooks/using-jupyter-notebooks.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#launching-jupyter-notebook">
+   Launching Jupyter Notebook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#navigating-the-jupyter-notebook-interface">
+   Navigating the Jupyter Notebook interface
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moving-in-files">
+   Moving in Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-new-notebook">
+   Creating a new notebook
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#working-in-jupyter-notebooks">
+     Working in Jupyter notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-notebook">
+   First Notebook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-exporting-and-publishing-jupyter-notebooks">
+   Saving, exporting, and publishing Jupyter notebooks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-notebooks-for-other-programming-languages">
+   Jupyter Notebooks for other programming languages
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="using-jupyter-notebooks">
+<h1>Using Jupyter Notebooks<a class="headerlink" href="#using-jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a modified version of “<a class="reference external" href="https://programminghistorian.org/en/lessons/jupyter-notebooks">Introduction to Jupyter Notebooks</a>” by
+Quinn Dombrowski, Tassie Gniady, and David Kloster originally published at <a class="reference external" href="https://programminghistorian.org/en/">The Programming Historian</a>.</p>
+</div>
+<div class="section" id="launching-jupyter-notebook">
+<h2>Launching Jupyter Notebook<a class="headerlink" href="#launching-jupyter-notebook" title="Permalink to this headline">¶</a></h2>
+<p>Assuming you’ve already installed Anaconda as described above, you can launch Anaconda Navigator like any other software application. (You can close the prompt about creating an Anaconda Cloud account; you don’t need an account to work with Anaconda.) On the home screen, you should see a set of icons and brief blurbs about each application included with Anaconda.</p>
+<p>Click on the “Launch” button under the <em>Jupyter Notebook</em> icon.</p>
+<p><img alt="Anaconda Navigator interface" src="https://programminghistorian.org/images/jupyter-notebooks/anaconda-navigator.png" /></p>
+<p>If you prefer to use the command line instead of Anaconda Navigator, once you have Anaconda installed, you should be able to open a new Terminal window (Mac) or Command Prompt (Win) and run <code>jupyter notebook</code> to launch the web browser with the Jupyter Notebook application. If you are using the command line to launch Jupyter Notebook, pay attention to the directory you are in when you launch it. That folder becomes the home directory that will appear immediately in the Jupyter Notebook interface, as described below.</p>
+<p>Either approach will open up a new window or tab in your default browser with the Jupyter Notebook interface. Jupyter Notebook is browser-based: you only interact with it through your browser, even when Jupyter Notebook is running on your own computer.</p>
+</div>
+<div class="section" id="navigating-the-jupyter-notebook-interface">
+<h2>Navigating the Jupyter Notebook interface<a class="headerlink" href="#navigating-the-jupyter-notebook-interface" title="Permalink to this headline">¶</a></h2>
+<p>The Jupyter Notebook file browser interface is the main way to open a Jupyter notebook (.ipynb) file. If you try to open one in a plain text editor, the notebook will be displayed as a JSON file, not with interactive code blocks. To view a notebook through the Jupyter interface, you have to launch Jupyter Notebook first (which will display in a browser window), and open the file from within Jupyter Notebook. Unfortunately, there is no way to set Jupyter Notebook as the default software application to open .ipynb files when you double-click on them.</p>
+<p>When you launch Jupyter Notebook from Anaconda Navigator, it automatically displays your home directory. This is usually the directory with your username on a Mac (/Users/<em>your-user-name</em>). On a PC it is usually C:. If you launch Jupyter Notebook from the command line, it will display the contents of the folder you were in when you launched it. (Using the command line, you can also directly launch a specific notebook, e.g. <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">example.ipynb</span></code>.)</p>
+<p>To avoid cluttering this folder, you can make a new folder within this directory for your notebooks. You can either do this in your usual file management interface (Finder on Mac, or File Explorer on Windows), or within Jupyter Notebook itself, since Jupyter Notebook, much like Google Drive, provides a file management interface within a browser, as well as a menu-and-toolbar UI for authoring files. To add a new folder within Jupyter Notebook, click on <em>New</em> in the upper right, and choose <em>Folder</em>. This will create a new folder called “Untitled Folder”. To change the name, click the checkbox to the left of the “Untitled Folder”, then click on the “Rename” button that appears under the “Files” tab. Name the folder <em>notebooks</em>. Click on it to open that folder.</p>
+</div>
+<div class="section" id="moving-in-files">
+<h2>Moving in Files<a class="headerlink" href="#moving-in-files" title="Permalink to this headline">¶</a></h2>
+<p>If you want to add data files or notebooks, you can do that directly from within the Jupyter Notebook file browser. Towards the upper right, click the “Upload” button and upload your file. It is convient to have all related files in the same directory or sets of subdirectories.</p>
+<p><img alt="Uploading files in the Jupyter Notebook interface" src="https://programminghistorian.org/images/jupyter-notebooks/jupyter-upload.png" /></p>
+<p>Note that this isn’t the only way to make files appear in the Jupyter Notebook file browser. The <em>notebooks</em> folder you created is a regular directory on your computer, and so you can also use your usual file management interface (e.g. Finder on Mac, or File Explorer on Windows) to put .ipynb and/or data files in this directory. Jupyter notebooks use the location of the notebook file itself (the .ipynb file) as the default starting path. For workshops and courses, it may make sense to create a folder where you can store the notebook, any attached images, and the data you’re going to work with, all together. If everything isn’t in the same folder, you’ll have to include the path when referencing it, or use Python code within the notebook to change the working directory.</p>
+</div>
+<div class="section" id="creating-a-new-notebook">
+<h2>Creating a new notebook<a class="headerlink" href="#creating-a-new-notebook" title="Permalink to this headline">¶</a></h2>
+<p>Inside the <em>notebooks</em> folder, create a new Jupyter notebook to use to convert the dates for your research project. Click the “New” button in the upper right of the Jupyter Notebook file browser interface. If you’ve just installed Anaconda as described above, your only option will be to create a Jupyter notebook using the Python 3 <em>kernel</em> (the backend component that actually runs the code written in the notebook), but we’ll discuss below how to add kernels for other languages. Click on “Python 3”, and Jupyter Notebook will open a new tab with the interface for Jupyter notebooks themselves. By default, the notebook will be named “Untitled”; you can click on that text at the top of the screen to rename it.</p>
+<p><img alt="Creating a new Jupyter notebook" src="https://programminghistorian.org/images/jupyter-notebooks/jupyter-createnew.png" /></p>
+<div class="section" id="working-in-jupyter-notebooks">
+<h3>Working in Jupyter notebooks<a class="headerlink" href="#working-in-jupyter-notebooks" title="Permalink to this headline">¶</a></h3>
+<p>A notebook is made up of <em>cells</em>: boxes that contain code or human-readable text. Every cell has a type, which can be selected from the drop-down options in the menu. The default option is “Code”; human-readable text boxes should use the “Markdown” type, and will need to be written using Markdown formatting conventions. To learn more about Markdown, see the <span class="xref myst">“Getting Started With Markdown”</span> Programming Historian lesson.</p>
+<p>When you create a new Jupyter notebook, the first cell will be a code cell. At the top of the Jupyter Notebook interface is a toolbar with functions that apply to the currently-selected cell. One of the functions is a dropdown that reads “Code” by default. Click on this dropdown and select “Markdown”. (You can also use a keyboard shortcut, <em>esc + m</em>, to change the current cell to Markdown, and <em>esc + y</em> changes it back to a code cell.) We’ll start this notebook with a title and a brief explanation of what the notebook is doing. For the moment, this is just for your own memory and reference; you don’t want to invest too much in prose and formatting at this stage of the project, when you don’t know whether you’ll end up using this code as part of your final project, or if you’ll use a different tool or method. But it can still be helpful to include some markdown cells with notes to help you reconstruct your process.</p>
+<p>Paste the following into the first cell. If it doesn’t appear with the first line in a large font (as a header), make sure you’ve selected “Markdown” from the dropdown at the top.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># First Notebook</span>
+<span class="n">Playing</span> <span class="n">around</span> <span class="k">with</span> <span class="n">a</span> <span class="n">Juypter</span> <span class="n">notebook</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="first-notebook">
+<h2>First Notebook<a class="headerlink" href="#first-notebook" title="Permalink to this headline">¶</a></h2>
+<p>Playing around with a Juypter notebook</p>
+<p>When you’re editing a cell, you can use Ctrl + Z (Win) or Command + Z (Mac) to undo changes that you’ve made. Each cell retains its own edit history; even if you move to a different cell and make edits there, you can subsequently click back on the first cell and undo your earlier changes there, without losing the changes to the second cell.</p>
+<p>To leave editing mode and “run” this cell (for a Markdown cell, this doesn’t <em>do</em> anything, just moves you further down the notebook), you can click <i class="fa-step-forward fa"></i> in the toolbar or press Ctrl+Enter (Ctrl+Return on Mac). If you want to resume editing it later, you can either double-click it, or select the cell (which will show a vertical blue line on the left once it’s selected) by clicking it once, and then hitting the Enter (Win) or Return (Mac) key. To leave editing mode, you can click <i class="fa-step-forward fa"></i> in the toolbar or press Ctrl+Enter (Ctrl+Return on Mac). If you want to run your current cell and add a new cell (by default, a code cell) immediately below it, you can press Alt+Enter (Option+Enter on Mac).</p>
+<p>To add a new cell, click the plus button <i class="fa fa-plus"></i> in the toolbar (or use the <em>esc + b</em> keyboard shortcut). This will create a new code cell below the cell that’s currently selected. Create a new code cell, to print ‘hello’.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Clicking the <i class="fa-step-forward fa"></i> button in the toolbar when you have a Code cell selected executes the code inside the cell.</p>
+<p>After you run a code cell, a number will appear in brackets to the left of the cell. This number indicates the order in which the cell was run. If you go back and run the cell again, the number is updated.</p>
+<p>If a number doesn’t immediately appear next to the cell, you’ll see an asterisk in brackets. This means that the code cell hasn’t finished running. This is common for computationally-intensive code (e.g. natural language processing) or long-running tasks like web scraping. Whenever a code cell is running, the favicon in the notebook’s browser tab changes to an hourglass . If you want to change tabs and do something else while the code is running, you can tell that it’s done when the hourglass changes back to the notebook icon .</p>
+<p>Jupyter notebooks work best if you run the cells sequentially. Sometimes you can get errors or incorrect outputs if you run the cells out of order or attempt to iteratively edit and run different parts of the notebook. If you’ve made lots of changes and run code blocks in a non-linear fashion and find that you’re getting strange output, you can reset Jupyter Notebook by clicking on Kernel in the menu and choosing Restart &amp; Clear Output. Even if you don’t notice anything strange, it’s a good idea to do Restart &amp; Clear Output and re-run your code once you’ve finished writing it, to make sure the output is accurate.</p>
+</div>
+<div class="section" id="saving-exporting-and-publishing-jupyter-notebooks">
+<h2>Saving, exporting, and publishing Jupyter notebooks<a class="headerlink" href="#saving-exporting-and-publishing-jupyter-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>Jupyter autosaves your work periodically by creating “checkpoints”. If something goes wrong with your notebook, you can revert to a previous checkpoint by going to “File”, then “Revert to Checkpoint”, and choosing a timestamp. That said, it’s still important to save your notebook (using the save button <i class="fa fa-floppy-o"></i>), because if you close and shut down the notebook kernel (including restarting the kernel), the checkpoints will be lost.</p>
+<p>You can also download the notebook (<em>File &gt; Download as</em>) in several different file formats. Downloading the Notebook format (.ipynb) is useful if you want to share your code in its full notebook format. You can also download it as code in whatever language your notebook is in (e.g. .r if in R or .py if Python or .js if JavaScript), as an .html file, as a markdown (.md) file, or as a PDF via LaTeX. If you download it as code, the Markdown cells become comments. (If you want to convert an .ipynb file to another format after you’ve downloaded it, you can use the <a class="reference external" href="https://github.com/jupyter/nbconvert">nbconvert utility</a>.)</p>
+<p>If you’re working on a research project, you can use a Jupyter notebook, or a series of notebooks, along the way to keep track of your workflow. Some scholars post these notebooks on GitHub, along with slides or poster PDFs, and source data (or metadata, copyright permitting), to accompany presentations and talks. GitHub renders non-interactive versions of notebook files, so they can be previewed within a repo. Alternately, you can paste the URL of a GitHub repo that has Jupyter notebooks into <a class="reference external" href="https://nbviewer.jupyter.org/">nbviewer</a>, which can sometimes a faster and more reliable preview. You may want to include a Markdown cell with a recommended citation for your Jupyter notebook, and a pointer to the GitHub repo where it is stored, especially if your notebook includes code that others might be able to reuse for similar analyses.</p>
+<p>The code you just developed as part of this lesson belongs somewhere in the middle of a real project. If you’re using notebooks to document your workflow, you might choose to add the new code cell to an existing notebook, rather than downloading it as a separate, stand-alone notebook. Jupyter notebooks can be particularly helpful for documenting project workflows when you’re working with collaborators who may only be involved for a short period of time (such as summer undergraduate interns). With short-term collaborators, it’s important to help them understand and start using the project’s workflows without a lot of start-up time, and Jupyter notebooks can lay out these workflows step-by-step, explain where and how files are stored, and provide pointers to external tutorials and training materials to help collaborators who are less familiar with the project’s technical underpinnings get started.</p>
+<p>As your project progresses, if you’re publishing through open-access channels, and your data sets can be freely redistributed, Jupyter notebooks can provide an ideal format for making the code underpinning your scholarly argument visible, testable, and reusable. While journals and presses may not accept Jupyter notebooks as a submission format, you could develop a notebook “version” of your paper that includes the full text (as Markdown cells), with code cells integrated into the flow of the scholarly narrative as an immediately accessable illustration of the analysis you’re describing. You could also include the code cells that make up the data preparation workflows as an appendix, either in the same notebook, or in a separate one. Integrating the code with the text of a scholarly article makes it far more likely that readers will actually engage with the code, since they can simply run it within the same notebook where they’re reading the argument. Some scholars, particularly in Europe, also post their notebooks to <a class="reference external" href="https://zenodo.org/">Zenodo</a>, an archive for research regardless of the country of origin, funder, or discipline. Zenodo supports data sets up to 50 GB (vs. the 100 MB file size limit on Github), and provides DOIs for uploaded material, including notebooks. Some scholars combine archiving on Zenodo for sustainability with publishing on GitHub for findability, by including the Zenodo DOI as part of the readme.md file in the GitHub repository that includes the notebooks. As an example, Giovanni Colavizza and Matteo Romanello’s <a class="reference external" href="https://github.com/mromanello/ADA-DHOxSS2019">“Applied Data Analytics” workshop notebook for DHOxSS 2019</a> is published on GitHub but includes a Zenodo DOI.</p>
+</div>
+<div class="section" id="jupyter-notebooks-for-other-programming-languages">
+<h2>Jupyter Notebooks for other programming languages<a class="headerlink" href="#jupyter-notebooks-for-other-programming-languages" title="Permalink to this headline">¶</a></h2>
+<p>Jupyter Notebooks allow you to use many different programming languages including R, Julia, JavaScript, PHP, or Ruby. A current list of available languages can be found on the <a class="reference external" href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">Jupyter Kernels</a> GitHub page.</p>
+<p>While Python is supported by default when you install Jupyter Notebook through Anaconda, the other programming languages need to have their language kernels installed before they can be run in Jupyter Notebook. The installation instructions are different for each language kernel, so it is best to just find and follow the instructions for your preferred language. At least for R, this is relatively straightforward. The <a class="reference external" href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">Jupyter Kernels</a> GitHub page has links to instructions for all available language kernels.</p>
+<p>Once you have the kernel for your desired language(s) installed, you can run notebooks written in that programming language, or you can create your own notebooks that execute that language. Each language with a kernel installed on your computer will be available as an option when you create a new notebook as described above.</p>
+<p>As an example of an R notebook, see <a class="reference external" href="https://github.com/quinnanya/enumerations">this Jupyter adaptation of Andrew Piper’s R code from “Enumerations”</a>.</p>
+<p>This work is licensed under a <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>.*</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="setup.html" title="previous page">Setup</a>
+    <a class='right-next' id="next-link" href="python.html" title="next page">Python 101</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neal Caren and Katie Furl<br/>
+        
+          <div class="extra_footer">
+            Text Mining With Python
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
